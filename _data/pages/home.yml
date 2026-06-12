@@ -1,0 +1,31 @@
+# SEO - Note that the page title tag should be between 50-60 characters (50 is ideal) and is the most important SEO lever you have
+# Meta description should be between 120-160 (150 is the sweet spot)
+title: "Washington Medicare Brokers | J&R Health Insurance"
+description: "Family-owned Medicare brokerage serving WA, OR, GA & TN. Free, personalized help for seniors and veterans choosing plans from all major carriers."
+
+##########################################
+
+# Page Content
+tagline: "Where coverage meets care"
+intro: "We are a family-owned Medicare brokerage serving the Pacific Northwest and beyond, here to take the stress out of choosing a health plan. We help individuals and families weigh their options, including coverage for veterans, and we work with every major carrier. There's no fee for our help. Carriers compensate brokers directly, so whether you're ready to enroll or just have questions, you'll never see a bill from us."
+
+# Contact Info
+contact-heading: "Contact us"
+
+email: "info@jrhealthins.org"
+phone: "(253) 528-8805"
+fax: "(253) 363-8808"
+address: "702 S Hill Park Dr, Ste 205"
+city-state-zip: "Puyallup, WA 98373"
+google-maps-url: "https://maps.app.goo.gl/MDMv6tHtpVSPW2Ki7"
+
+# CMS disclaimer
+disclaimer: "We do not offer every plan available in your area. Any information we provide is limited to those plans we do offer in your area. Please contact Medicare.gov or 1-800-MEDICARE to get information on all of your options. We are not connected with or endorsed by the U.S. government or the federal Medicare program."
+
+##########################################
+
+# Footer
+copyright: "Copyright © 2026 J&R Health Insurance LLC. All rights reserved."
+show-linkedin: true
+
+##########################################

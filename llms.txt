@@ -1,0 +1,9 @@
+---
+excludeFromSitemap: true
+---
+# {{ site.data.global.companyName }}
+
+> {{ site.data.global.defaultPageDescription }}
+
+## Company
+- [Home page]({{ site.data.global.url }})

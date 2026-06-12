@@ -1,0 +1,25 @@
+{% assign pageData = site.data.global %}
+<head>
+    <!-- Structural -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% assign pageTitle = pageData.defaultPageTitle %}
+    {% assign pageDescription = pageData.defaultPageDescription %}
+    {% if page.title %}
+        {% assign pageTitle = page.title %}
+    {% endif %}
+    {% if page.description %}
+        {% assign pageDescription = page.description %}
+    {% endif %}
+    <title>{{ pageTitle | replace: "&", "&amp;" }}</title>
+    <meta name="description" content="{{ pageDescription | replace: "&", "&amp;" }}">
+    <link rel="canonical" href="{{ page.canonicalSlug }}">
+
+    <!-- Fonts & Stylesheets -->
+    <link rel="stylesheet" href="{{ site.basePath }}assets/css/main.css">
+
+    <!-- Icons -->
+    <link rel="icon" href="{{ site.basePath }}favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ site.basePath }}assets/images/ui/apple-touch-icon.png">
+    <link rel="manifest" href="{{ site.basePath }}manifest.webmanifest">
+</head>

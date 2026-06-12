@@ -1,0 +1,38 @@
+{% comment %}
+
+See original vendor code here:
+https://github.com/jmbn424/website-documentation/blob/main/technical/lead-form-code.md
+
+{% endcomment %}
+<form class="form" action="https://app.agencybloc.com/fp/webToLead/v1/BBZXH5SZLV4KWOOSRUGT/" method="post">
+    <div class="form__field">
+        <label for="field-first-name">First Name</label>
+        <input id="field-first-name" name="firstName" type="text" autocomplete="given-name" maxlength="64" required size="40" value="">
+    </div>
+    <div class="form__field">
+        <label for="field-last-name">Last Name</label>
+        <input id="field-last-name" name="lastName" type="text" autocomplete="family-name" maxlength="64" required size="40" value="">
+    </div>
+    <div class="form__field">
+        <label for="field-phone">Phone Number</label>
+        <input id="field-phone" name="cellPhone" type="tel" autocomplete="tel" pattern="\+?1?[ .\-]?\(?\d{3}\)?[ .\-]?\d{3}[ .\-]?\d{4}" minlength="10" maxlength="20" required size="40" value="">
+    </div>
+    <div class="form__field">
+        <label for="field-email">Email Address <span class="text-secondary">(optional)</span></label>
+        <input id="field-email" name="email" type="email" autocomplete="email" maxlength="254" size="40" value="">
+    </div>
+    <div class="form__field">
+        <label for="field-website">Home Page URL <span class="text-secondary">(optional)</span></label>
+        <input id="field-website" name="_Website" type="text" placeholder="https://example.com" size="40" value="">
+    </div>
+    <div class="form__field">
+        <label for="field-message">Message <span class="text-secondary">(optional)</span></label>
+        <textarea id="field-message" name="custom_Message" maxlength="800" cols="40" rows="5"></textarea>
+    </div>
+    <p>
+        <small>By entering your name and contact information and clicking the Submit button, you are consenting to receive calls, texts, and emails regarding your health insurance, Medicare, and prescription drug plan options from a J&R Health Insurance representative.</small>
+    </p>
+    <div class="form__submit form-action">
+        <button type="submit">Submit</button>
+    </div>
+</form>

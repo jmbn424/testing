@@ -1,0 +1,94 @@
+{% assign pageData = site.data.global %}
+<footer>
+    <div>
+        <h2>
+            <a href="{{ site.basePath }}">
+                <span class="sr">{{ pageData.companyName | replace: "&", "&amp;" }}</span>
+                <!-- logo -->
+            </a>
+            <span class="sr"> - </span>
+            <span>{{ pageData.tagline }}</span>
+        </h2>
+
+        <address>
+            <p>
+                <strong>Email<span class="sr">: </span></strong>
+                <a href="mailto:info@jrhealthins.org">{{ pageData.email }}</a>
+                <br><br>
+            </p>
+            <p>
+                <strong>Phone<span class="sr">: </span></strong>
+                <a href="tel:253-528-8805">{{ pageData.phone }}</a>
+            </p>
+            <p>
+                <strong>Fax<span class="sr">: </span></strong>
+                <span>{{ pageData.fax }}</span>
+                <br><br>
+            </p>
+            <p>
+                <strong>Address<span class="sr">: </span></strong>
+                {% include external-link.liquid href=pageData.google-maps-url %}{{ pageData.address }}<br>{{ pageData.city-state-zip }}</a>
+            </p>
+        </address>
+
+        <p><strong>Hours<span class="sr">: </span></strong> Monday to Friday, 9:30 a.m. to 5:30 p.m. Pacific time, except holidays</p>
+
+        <nav aria-labelledby="footer-quick-links-heading">
+            <h3 id="footer-quick-links-heading">Quick Links</h3>
+            <ul>
+                <li><a href="{{ site.basePath }}">Home</a></li>
+                <li><a href="{{ site.basePath }}services">Services</a></li>
+                <li><a href="{{ site.basePath }}medicare-101">Medicare 101</a></li>
+                <li><a href="{{ site.basePath }}about">About Us</a></li>
+                <li><a href="{{ site.basePath }}contact">Contact Us</a></li>
+            </ul>
+        </nav>
+
+        <nav aria-labelledby="footer-chd-heading">
+            <h3 id="footer-chd-heading">Your Data Rights</h3>
+            <ul>
+                <li><a href="{{ site.basePath }}consumer-health-data-privacy">Consumer Health Data Privacy</a></li>
+            </ul>
+        </nav>
+
+        <nav aria-labelledby="footer-legal-links-heading">
+            <h3 id="footer-legal-links-heading">Legal</h3>
+            <ul>
+                <li><a href="{{ site.basePath }}privacy-policy">Privacy Policy</a></li>
+                <li><a href="{{ site.basePath }}terms">Terms &amp; Conditions</a></li>
+                <li><a href="{{ site.basePath }}accessibility">Accessibility</a></li>
+            </ul>
+        </nav>
+
+        <h3>Important Disclosures</h3>
+        <p>
+            <small>{{ pageData.disclaimer | replace: "&", "&amp;" }}</small>
+        </p>        
+        
+        <p>
+            <small>{{ pageData.copyright | replace: "&", "&amp;" | replace: "©", "&copy;" }}</small>
+        </p>
+
+        <nav aria-label="Additional page links">
+            <ul>
+                <li><a href="{{ site.basePath }}credits">Credits</a></li>
+                <li><a href="{{ site.basePath }}sitemap">Sitemap</a></li>
+            </ul>
+        </nav>
+
+        <nav aria-label="Social media links">
+            <ul>
+                <li>
+                    {% include external-link.liquid href="https://www.linkedin.com/company/jrhealthins/" %}
+                        <span>LinkedIn</span>
+                    </a>
+                </li>
+                <li>
+                    {% include external-link.liquid href="https://www.yelp.com/biz/j-and-r-health-insurance-puyallup" %}
+                        <span>Yelp</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</footer>

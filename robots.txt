@@ -1,0 +1,9 @@
+---
+excludeFromSitemap: true
+---
+# robots.txt for https://jrhealthins.org/
+
+User-agent: *
+Allow: /
+
+Sitemap: https://jrhealthins.org/sitemap.xml

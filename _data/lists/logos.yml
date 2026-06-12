@@ -1,0 +1,324 @@
+#################################
+- id: aetna
+  title: Aetna
+  url: https://www.aetna.com/
+  asset:
+    url: aetna.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: ameritas
+  title: Ameritas
+  url: https://www.ameritas.com/
+  asset:
+    url: ameritas.svg
+    width: 225
+    height: 58
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: cigna
+  title: Cigna Healthcare
+  url: https://www.cigna.com/
+  asset:
+    url: cigna.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: delta
+  title: Delta Dental
+  url: https://www.deltadental.com/
+  asset:
+    url: delta.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: devoted
+  title: Devoted Health
+  url: https://www.devoted.com/
+  asset:
+    url: devoted.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: humana
+  title: Humana
+  url: https://www.humana.com/
+  asset:
+    url: humana.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: kaiser
+  title: Kaiser Permanente
+  url: https://kaiserpermanente.org/
+  asset:
+    url: kaiser.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: lifewise
+  title: LifeWise Health Plan of Washington
+  url: https://www.lifewise.com/
+  asset:
+    url: lifewise.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: molina
+  title: Molina Healthcare
+  url: https://www.molinahealthcare.com/
+  asset:
+    url: molina.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: premera
+  title: Premera Blue Cross
+  url: https://www.premera.com/
+  asset:
+    url: premera.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: regence
+  title: Regence BlueShield
+  url: https://www.regence.com/
+  asset:
+    url: regence.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: scan
+  title: SCAN Health Plan
+  url: https://www.scanhealthplan.com/
+  asset:
+    url: scan.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: united
+  title: United Healthcare
+  url: https://www.uhc.com/
+  asset:
+    url: united.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: vsp
+  title: VSP Vision Care
+  url: https://www.vsp.com/
+  asset:
+    url: vsp.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: wellcare
+  title: Wellcare
+  url: https://www.wellcare.com/
+  asset:
+    url: wellcare.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+
+
+
+
+
+#################################
+- id: img
+  title: xxx
+  url: https://www.imglobal.com/
+  asset:
+    url: img.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: ina
+  title: xxx
+  url: http://www.inamedsupp.chubb.com/
+  asset:
+    url: ina.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: dentegra
+  title: xxx
+  url: xxx
+  asset:
+    url: dentegra.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: apple-health
+  title: xxx
+  url: xxx
+  asset:
+    url: apple-health.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: chpw
+  title: xxx
+  url: xxx
+  asset:
+    url: chpw.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: companion-life
+  title: xxx
+  url: xxx
+  asset:
+    url: companion-life.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: medi-share
+  title: xxx
+  url: xxx
+  asset:
+    url: medi-share.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: lifesecure
+  title: xxx
+  url: xxx
+  asset:
+    url: lifesecure.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: ambetter
+  title: xxx
+  url: xxx
+  asset:
+    url: ambetter.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: bridgespan
+  title: xxx
+  url: xxx
+  asset:
+    url: bridgespan.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: wahealthplanfinder
+  title: xxx
+  url: xxx
+  asset:
+    url: wahealthplanfinder.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: willamette
+  title: xxx
+  url: xxx
+  asset:
+    url: willamette.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: asuris
+  title: xxx
+  url: xxx
+  asset:
+    url: asuris.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0
+#################################
+- id: mutual-of-omaha
+  title: xxx
+  url: xxx
+  asset:
+    url: mutual-of-omaha.svg
+    width: xxx
+    height: xx
+    scale: 1
+    xOffset: 0
+    yOffset: 0

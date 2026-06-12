@@ -1,0 +1,12 @@
+---
+timezone: America/Los_Angeles
+markdown: kramdown
+sass:
+  sass_dir: assets/css/_modules
+  style: compressed
+plugins:
+# - jekyll-feed
+# - jekyll-paginate
+- jekyll-redirect-from
+baseurl: ""
+basePath: "./"

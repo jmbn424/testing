@@ -1,0 +1,18 @@
+{% assign pageData = site.data.global %}
+<header>
+    <a href="#main">Skip to main content</a>
+    <div>
+        <a class="logo" href="{{ site.basePath }}">                        
+            <span>{{ pageData.companyName | replace: "&", "&amp;" }}</span>
+        </a>
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="{{ site.basePath }}">Home</a></li>
+                <li><a href="{{ site.basePath }}services">Services</a></li>
+                <li><a href="{{ site.basePath }}medicare-101">Medicare 101</a></li>
+                <li><a href="{{ site.basePath }}about">About Us</a></li>
+                <li><a href="{{ site.basePath }}contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>

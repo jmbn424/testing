@@ -1,0 +1,17 @@
+---
+# layout: compress
+---
+{% assign pageData = site.data.global %}
+<!DOCTYPE html>
+<html lang="en-us">
+    {% include head.liquid %}
+    <body>
+        {% include sections/header.liquid %}
+        <hr>
+        <main id="main">
+            {{ content }}
+        </main>
+        <hr>
+        {% include sections/footer.liquid %}
+  </body>
+</html>
