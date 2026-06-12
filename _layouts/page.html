@@ -9,7 +9,12 @@
         {% include sections/header.liquid %}
         <hr>
         <main id="main">
-            {{ content }}
+            <section class="hero">
+                {{ content }}
+            </section>
+            <section>
+                {{ page.document | markdownify }}
+            </section>
         </main>
         <hr>
         {% include sections/footer.liquid %}
