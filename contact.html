@@ -1,27 +1,21 @@
 ---
 layout: page
-canonicalSlug: https://jrhealthins.org/contact
+canonicalSlug: https://jmbn424.github.io/testing/contact
 title: Contact Us | J&R Health Insurance
-document: |
-
+hasForm: true
 ---
 {% assign pageData = site.data.global %}
-<h1>Contact Us</h1>
-<nav aria-label="Breadcrumb links">
-    <ol>
-        <li>
-            <a href="{{ site.basePath }}">Home</a>
-        </li>
-        <li>
-            <a href="{{ site.basePath }}contact">Contact Us</a>
-        </li>
-    </ol>
-</nav>
-
-{% comment %}
-    Note: This need to be restructured so it doesn't live inside of <section class="hero"> in the `page` layout.
-{% endcomment %}
-<div>
-    <h2>Get in touch</h2>
-    {% include sections/form.liquid %}
-</div>
+<section class="hero">
+    <h1>Contact Us</h1>
+    <nav aria-label="Breadcrumb links">
+        <ol>
+            <li>
+                <a href="{{ site.basePath }}">Home</a>
+            </li>
+            <li>
+                <a href="{{ site.basePath }}contact">Contact Us</a>
+            </li>
+        </ol>
+    </nav>
+</section>
+{% include sections/form.liquid %}

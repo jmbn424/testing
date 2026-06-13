@@ -1,9 +1,9 @@
 ---
 excludeFromSitemap: true
 ---
-# robots.txt for https://jrhealthins.org/
+# robots.txt for https://jmbn424.github.io/testing/
 
 User-agent: *
 Allow: /
 
-Sitemap: https://jrhealthins.org/sitemap.xml
+Sitemap: https://jmbn424.github.io/testing/sitemap.xml
