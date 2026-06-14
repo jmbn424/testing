@@ -27,11 +27,11 @@
             </p>
             <p>
                 <strong>Address<span class="sr">: </span></strong>
-                {% include external-link.liquid href=pageData.google-maps-url %}{{ pageData.address }}<br>{{ pageData.city-state-zip }}</a>
+                <a href="pageData.google-maps-url" target="_blank" rel="noopener">{{ pageData.address-1 }}{% if pageDate.address-2 %}<br>{{ pageData.address-2 }}{% endif %}<br>{{ pageData.city }}, {{ pageData.state }} {{ pageData.zip }}</a>
             </p>
         </address>
 
-        <p><strong>Hours<span class="sr">: </span></strong> Monday to Friday, 9:30 a.m. to 5:30 p.m. Pacific time, except holidays</p>
+        <p><strong>Hours<span class="sr">: </span></strong> {{ pageData.hours }}</p>
 
         <nav aria-labelledby="footer-quick-links-heading">
             <h3 id="footer-quick-links-heading">Quick Links</h3>
@@ -69,31 +69,30 @@
             <small>{{ pageData.copyright | replace: "&", "&amp;" | replace: "©", "&copy;" }}</small>
         </p>
 
-        <nav aria-label="Additional page links">
+        <nav aria-label="Additional pages">
             <ul>
                 <li><a href="{{ site.basePath }}credits">Credits</a></li>
                 <li><a href="{{ site.basePath }}sitemap">Sitemap</a></li>
             </ul>
         </nav>
 
-        <nav aria-label="Social media links">
-            <ul>
-                <li>
-                    {% include external-link.liquid href="https://www.linkedin.com/company/jrhealthins/" %}
-                        <span>LinkedIn</span>
-                    </a>
-                </li>
-                <li>
-                    {% include external-link.liquid href="https://www.facebook.com/jrhealthins" %}
-                        <span>Facebook</span>
-                    </a>
-                </li>
-                <li>
-                    {% include external-link.liquid href="https://www.yelp.com/biz/j-and-r-health-insurance-puyallup" %}
-                        <span>Yelp</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        {% if pageData.publishedSocialProfiles %}
+
+            <nav aria-label="Social media links">
+                <ul>
+                    {% for profileId in pageData.publishedSocialProfiles %}
+                        {% for profile in pageData.socialProfiles %}
+                            {% if profile.id == profileId %}
+                                <li>
+                                    <a href="{{ profile.url }}" target="_blank" rel="noopener">
+                                        <span>Follow us on <strong>{{ profile.name }}</strong></span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </nav>
+        {% endif %}
     </div>
 </footer>
