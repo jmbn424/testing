@@ -42,6 +42,7 @@ disclaimer: |
 copyright: |
   Copyright © 2026 J&R Health Insurance LLC. All rights reserved.
 
+## Switchboard
 licensedStates:
 # - CA
 - GA
@@ -49,6 +50,7 @@ licensedStates:
 - OR
 - TN
 - WA
+SMSProgramIsLive: false
 
+# TODO: Incorporate more "switchboard" config options around compliance state setting into this root data config file.
 # TODO: Add more fields to map to schema.org / structured data fields for SEO
-# TODO: Incorporate "switchboard" of compliance state setting into this root data config file.
