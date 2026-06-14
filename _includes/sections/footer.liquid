@@ -27,7 +27,12 @@
             </p>
             <p>
                 <strong>Address<span class="sr">: </span></strong>
-                <a href="pageData.google-maps-url" target="_blank" rel="noopener">{{ pageData.address-1 }}{% if pageDate.address-2 %}<br>{{ pageData.address-2 }}{% endif %}<br>{{ pageData.city }}, {{ pageData.state }} {{ pageData.zip }}</a>
+                {% capture address %}{{ pageData.address-1 }}{% if pageDate.address-2 %}<br>{{ pageData.address-2 }}{% endif %}<br>{{ pageData.city }}, {{ pageData.state }} {{ pageData.zip }}{% endcapture %}
+                {% if pageData.googleMapsURL %}
+                    <a href="{{ pageData.googleMapsURL }}" target="_blank" rel="noopener">{{ address }}</a>
+                {% else %}
+                    <span>{{ address }}</span>
+                {% endif %}
             </p>
         </address>
 

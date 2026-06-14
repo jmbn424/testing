@@ -17,19 +17,17 @@ state: WA
 zip: 98373
 hours: Monday to Friday, 9:30 a.m. to 5:30 p.m. Pacific time, except holidays
 
+googleMapsURL: https://maps.app.goo.gl/MDMv6tHtpVSPW2Ki7
 socialProfiles:
 - id: linkedin
   name: LinkedIn
-  url: "https://www.linkedin.com/company/jrhealthins/"
+  url: https://www.linkedin.com/company/jrhealthins/
 - id: facebook
   name: Facebook
-  url: "https://www.facebook.com/jrhealthins"
+  url: https://www.facebook.com/jrhealthins
 - id: yelp
   name: Yelp
-  url: "https://www.yelp.com/biz/j-and-r-health-insurance-puyallup"
-- id: google-business-profile
-  name: Google
-  url: "https://maps.app.goo.gl/MDMv6tHtpVSPW2Ki7"
+  url: https://www.yelp.com/biz/j-and-r-health-insurance-puyallup
 
 # Set of published social profile links in the order they should be listed in places like the footer:
 publishedSocialProfiles:
