@@ -1,9 +1,13 @@
 <script>
     {% if page.hasForm %}
-    document.addEventListener('DOMContentLoaded', () => {
-        // fieldWeb: clear anything a password manager or browser autofilled before our ignore-hints applied.
-        const webField = document.getElementById('field-website');
-        if (webField) honeypot.value = '';
-    });
+        {% comment %}
+            Honeypot URL form field handling
+        {% endcomment %}
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // fieldWeb: clear anything a password manager or browser autofilled before ignore-hints are applied.
+            const webField = document.getElementById('field-website');
+            if (webField) webField.value = '';
+        });
     {% endif %}
 </script>
