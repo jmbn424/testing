@@ -6,4 +6,4 @@ excludeFromSitemap: true
 > {{ site.data.global.defaultPageDescription }}
 
 ## Company
-- [Home page]({{ site.data.global.url }})
+- [Home page]({{ site.data.global.url }}/)
