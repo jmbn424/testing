@@ -16,7 +16,9 @@
     {% endif %}
     <title>{{ pageTitle | replace: "&", "&amp;" }}</title>
     <meta name="description" content="{{ pageDescription | replace: "&", "&amp;" }}">
-    <link rel="canonical" href="{{ page.canonicalSlug }}">
+    {% unless page.excludeFromSitemap == true %}
+        <link rel="canonical" href="{{ page.canonicalSlug }}">
+    {% endunless %}
 
     <!-- Appearance -->
     <meta name="theme-color" content="#ffffff">
@@ -28,114 +30,116 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{ site.basePath }}assets/images/ui/apple-touch-icon.png">
     <link rel="manifest" href="{{ site.basePath }}manifest.webmanifest">
 
-    <!-- Sharing -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Washington Medicare Brokers | J&amp;R Health Insurance">
-    <meta property="og:description" content="Family-owned Medicare brokerage serving WA, OR, GA &amp; TN. Free, personalized help for seniors and veterans choosing plans from all major carriers.">
-    <meta property="og:image" content="https://jrhealthins.org/assets/images/ui/social.png">
-    <meta property="og:image:alt" content="J&amp;R Health Insurance">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://jrhealthins.org/">
-    <meta property="og:site_name" content="J&amp;R Health Insurance">
-    <meta property="og:locale" content="en_US">
-    <meta name="twitter:card" content="summary_large_image">
+    {% unless page.excludeFromSitemap == true %}
+        <!-- Sharing -->
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Washington Medicare Brokers | J&amp;R Health Insurance">
+        <meta property="og:description" content="Family-owned Medicare brokerage serving WA, OR, GA &amp; TN. Free, personalized help for seniors and veterans choosing plans from all major carriers.">
+        <meta property="og:image" content="https://jrhealthins.org/assets/images/ui/social.png">
+        <meta property="og:image:alt" content="J&amp;R Health Insurance">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:url" content="https://jrhealthins.org/">
+        <meta property="og:site_name" content="J&amp;R Health Insurance">
+        <meta property="og:locale" content="en_US">
+        <meta name="twitter:card" content="summary_large_image">
 
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@graph": [
-                {
-                    "@type": "WebSite",
-                    "@id": "https://jrhealthins.org/#website",
-                    "url": "https://jrhealthins.org/",
-                    "name": "J&R Health Insurance",
-                    "publisher": { "@id": "https://jrhealthins.org/#organization" },
-                    "inLanguage": "en-US"
-                },
-                {
-                    "@type": "WebPage",
-                    "@id": "https://jrhealthins.org/#webpage",
-                    "url": "https://jrhealthins.org/",
-                    "name": "Washington Medicare Brokers | J&R Health Insurance",
-                    "description": "Family-owned Medicare brokerage serving WA, OR, GA & TN. Free, personalized help for seniors and veterans choosing plans from all major carriers.",
-                    "isPartOf": { "@id": "https://jrhealthins.org/#website" },
-                    "about": { "@id": "https://jrhealthins.org/#organization" },
-                    "inLanguage": "en-US"
-                },
-                {
-                    "@type": "InsuranceAgency",
-                    "@id": "https://jrhealthins.org/#organization",
-                    "name": "J&R Health Insurance",
-                    "url": "https://jrhealthins.org/",
-                    "logo": {
-                        "@type": "ImageObject",
-                        "url": "https://jrhealthins.org/assets/images/ui/icon-512.png",
-                        "width": 512,
-                        "height": 512,
-                        "caption": "J&R Health Insurance"
+        <!-- Structured Data -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@graph": [
+                    {
+                        "@type": "WebSite",
+                        "@id": "https://jrhealthins.org/#website",
+                        "url": "https://jrhealthins.org/",
+                        "name": "J&R Health Insurance",
+                        "publisher": { "@id": "https://jrhealthins.org/#organization" },
+                        "inLanguage": "en-US"
                     },
-                    "image": "https://jrhealthins.org/assets/images/ui/social.png",
-                    "telephone": "+12535288805",
-                    "faxNumber": "+12533638808",
-                    "email": "info@jrhealthins.org",
-                    "address": {
-                        "@type": "PostalAddress",
-                        "streetAddress": "702 S Hill Park Dr, Ste 205",
-                        "addressLocality": "Puyallup",
-                        "addressRegion": "WA",
-                        "postalCode": "98373",
-                        "addressCountry": "US"
+                    {
+                        "@type": "WebPage",
+                        "@id": "https://jrhealthins.org/#webpage",
+                        "url": "https://jrhealthins.org/",
+                        "name": "Washington Medicare Brokers | J&R Health Insurance",
+                        "description": "Family-owned Medicare brokerage serving WA, OR, GA & TN. Free, personalized help for seniors and veterans choosing plans from all major carriers.",
+                        "isPartOf": { "@id": "https://jrhealthins.org/#website" },
+                        "about": { "@id": "https://jrhealthins.org/#organization" },
+                        "inLanguage": "en-US"
                     },
-                    "geo": {
-                        "@type": "GeoCoordinates",
-                        "latitude": 47.1606086,
-                        "longitude": -122.3020523
-                    },
-                    "openingHoursSpecification": [{
-                        "@type": "OpeningHoursSpecification",
-                        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-                        "opens": "09:30",
-                        "closes": "17:30"
-                    }],
-                    "areaServed": [
-                        { "@type": "State", "name": "Washington", "sameAs": "https://www.wikidata.org/wiki/Q1223" },
-                        { "@type": "State", "name": "Oregon", "sameAs": "https://www.wikidata.org/wiki/Q824" },
-                        { "@type": "State", "name": "Georgia", "sameAs": "https://www.wikidata.org/wiki/Q1428" },
-                        { "@type": "State", "name": "Tennessee", "sameAs": "https://www.wikidata.org/wiki/Q1509" }
-                    ],
-                    "hasOfferCatalog": {
-                        "@type": "OfferCatalog",
-                        "name": "Insurance brokerage services",
-                        "itemListElement": [{
-                            "@type": "Offer",
-                            "itemOffered": {
-                                "@type": "Service",
-                                "name": "Medicare guidance for first-time eligibles"
-                            }
-                        }, {
-                            "@type": "Offer",
-                            "itemOffered": {
-                                "@type": "Service",
-                                "name": "ACA Marketplace guidance"
-                            }
-                        }, {
-                            "@type": "Offer",
-                            "itemOffered": {
-                                "@type": "Service",
-                                "name": "Medicare guidance for veterans and their families"
-                            }
-                        }]
-                    },
-                    "hasMap": "https://maps.google.com/maps?cid=9426287045452652682",
-                    "sameAs": [
-                        "https://www.linkedin.com/company/jrhealthins/",
-                        "https://www.facebook.com/jrhealthins"
-                    ]
-                }
-            ]
-        }
-    </script>
+                    {
+                        "@type": "InsuranceAgency",
+                        "@id": "https://jrhealthins.org/#organization",
+                        "name": "J&R Health Insurance",
+                        "url": "https://jrhealthins.org/",
+                        "logo": {
+                            "@type": "ImageObject",
+                            "url": "https://jrhealthins.org/assets/images/ui/icon-512.png",
+                            "width": 512,
+                            "height": 512,
+                            "caption": "J&R Health Insurance"
+                        },
+                        "image": "https://jrhealthins.org/assets/images/ui/social.png",
+                        "telephone": "+12535288805",
+                        "faxNumber": "+12533638808",
+                        "email": "info@jrhealthins.org",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "streetAddress": "702 S Hill Park Dr, Ste 205",
+                            "addressLocality": "Puyallup",
+                            "addressRegion": "WA",
+                            "postalCode": "98373",
+                            "addressCountry": "US"
+                        },
+                        "geo": {
+                            "@type": "GeoCoordinates",
+                            "latitude": 47.1606086,
+                            "longitude": -122.3020523
+                        },
+                        "openingHoursSpecification": [{
+                            "@type": "OpeningHoursSpecification",
+                            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+                            "opens": "09:30",
+                            "closes": "17:30"
+                        }],
+                        "areaServed": [
+                            { "@type": "State", "name": "Washington", "sameAs": "https://www.wikidata.org/wiki/Q1223" },
+                            { "@type": "State", "name": "Oregon", "sameAs": "https://www.wikidata.org/wiki/Q824" },
+                            { "@type": "State", "name": "Georgia", "sameAs": "https://www.wikidata.org/wiki/Q1428" },
+                            { "@type": "State", "name": "Tennessee", "sameAs": "https://www.wikidata.org/wiki/Q1509" }
+                        ],
+                        "hasOfferCatalog": {
+                            "@type": "OfferCatalog",
+                            "name": "Insurance brokerage services",
+                            "itemListElement": [{
+                                "@type": "Offer",
+                                "itemOffered": {
+                                    "@type": "Service",
+                                    "name": "Medicare guidance for first-time eligibles"
+                                }
+                            }, {
+                                "@type": "Offer",
+                                "itemOffered": {
+                                    "@type": "Service",
+                                    "name": "ACA Marketplace guidance"
+                                }
+                            }, {
+                                "@type": "Offer",
+                                "itemOffered": {
+                                    "@type": "Service",
+                                    "name": "Medicare guidance for veterans and their families"
+                                }
+                            }]
+                        },
+                        "hasMap": "https://maps.google.com/maps?cid=9426287045452652682",
+                        "sameAs": [
+                            "https://www.linkedin.com/company/jrhealthins/",
+                            "https://www.facebook.com/jrhealthins"
+                        ]
+                    }
+                ]
+            }
+        </script>
+    {% endunless %}
 </head>
