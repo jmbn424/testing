@@ -1,5 +1,6 @@
 companyName: J&R Health Insurance
 legalName: J&R Health Insurance LLC
+srName: J and R Health Insurance
 url: https://jmbn424.github.io/testing/
 defaultPageTitle: 'Washington Medicare Brokers | J&R Health Insurance'
 defaultPageDescription: |
@@ -17,7 +18,7 @@ state: WA
 zip: 98373
 hours: Monday to Friday, 9:30 a.m. to 5:30 p.m. Pacific time, except holidays
 
-googleMapsURL: https://maps.app.goo.gl/MDMv6tHtpVSPW2Ki7
+googleMapsURL: https://maps.google.com/maps?cid=9426287045452652682
 socialProfiles:
 - id: linkedin
   name: LinkedIn

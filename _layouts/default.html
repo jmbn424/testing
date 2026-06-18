@@ -1,21 +1,20 @@
----
-# layout: compress
----
-{% assign pageData = site.data.global %}
-<!DOCTYPE html{% if pageData.htmlClass %} class="{{ pageData.htmlClass }}"{% endif %}>
-<html lang="en-us">
+<!DOCTYPE html>
+<html lang="en-US">
     {% include head.liquid %}
     <body>
         {% include sections/header.liquid %}
-        <main id="main">
+
+        <main id="main" tabindex="-1">
+            {{ content }}
             {% if page.document %}
                 <section class="md">
                     {{ page.document | markdownify }}
                 </section>
             {% endif %}
-            {{ content }}
         </main>
+
         {% include sections/footer.liquid %}
-        {% include sections/scripts.liquid %}
-  </body>
+        {% include svg.liquid %}
+        {% include scripts.liquid %}
+    </body>
 </html>

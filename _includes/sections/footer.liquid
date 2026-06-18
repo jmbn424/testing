@@ -1,103 +1,104 @@
 {% assign pageData = site.data.global %}
-<footer>
-    <div>
-        <h2>
-            <a href="{{ site.basePath }}">
-                <span class="sr">{{ pageData.companyName | replace: "&", "&amp;" }}</span>
-                <!-- logo -->
-            </a>
-            <span class="sr"> - </span>
-            <span>{{ pageData.tagline }}</span>
-        </h2>
+{% assign companyName = pageData.companyName | replace: "&", "&amp;" %}
+<footer class="footer">
+    <div class="footer__content max-width-laptop layout-bones">
+        <div class="footer__brand">
+            <h2>
+                <a href="{{ site.basePath }}">
+                    <span class="sr-only">{{ pageData.srName }}</span>
+                    <svg width="184" height="34" aria-hidden="true"><use href="#svg__logo-jrhealthins" /></svg>
+                </a>
+            </h2>
+            <p class="t-tagline">Where coverage meets care</p>
+        </div>
+        <div class="layout-kirk">
+            <div class="footer__contact">
+                <h3 class="sr-only">Contact Information</h3>
+                <address>
+                    <dl class="contact">
+                        <dt>Phone</dt>
+                        <dd><a href="tel:+12535288805">(253) 528-8805</a></dd>
 
-        <address>
-            <p>
-                <strong>Email<span class="sr">: </span></strong>
-                <a href="mailto:info@jrhealthins.org">{{ pageData.email }}</a>
-                <br><br>
-            </p>
-            <p>
-                <strong>Phone<span class="sr">: </span></strong>
-                <a href="tel:253-528-8805">{{ pageData.phone }}</a>
-            </p>
-            <p>
-                <strong>Fax<span class="sr">: </span></strong>
-                <span>{{ pageData.fax }}</span>
-                <br><br>
-            </p>
-            <p>
-                <strong>Address<span class="sr">: </span></strong>
-                {% capture address %}{{ pageData.address-1 }}{% if pageData.address-2 %}<br>{{ pageData.address-2 }}{% endif %}<br>{{ pageData.city }}, {{ pageData.state }} {{ pageData.zip }}{% endcapture %}
-                {% if pageData.googleMapsURL %}
-                    <a href="{{ pageData.googleMapsURL }}" target="_blank" rel="noopener">{{ address }}</a>
-                {% else %}
-                    <span>{{ address }}</span>
-                {% endif %}
-            </p>
-        </address>
+                        <dt>Fax</dt>
+                        <dd>(253) 363-8808</dd>
 
-        <p><strong>Hours<span class="sr">: </span></strong> {{ pageData.hours }}</p>
+                        <dt>Email</dt>
+                        <dd><a href="mailto:info@jrhealthins.org">info@jrhealthins.org</a></dd>
 
-        <nav aria-labelledby="footer-quick-links-heading">
-            <h3 id="footer-quick-links-heading">Quick Links</h3>
-            <ul>
-                <li><a href="{{ site.basePath }}">Home</a></li>
-                <li><a href="{{ site.basePath }}services">Services</a></li>
-                <li><a href="{{ site.basePath }}medicare-101">Medicare 101</a></li>
-                <li><a href="{{ site.basePath }}about">About Us</a></li>
-                <li><a href="{{ site.basePath }}contact">Contact Us</a></li>
-            </ul>
-        </nav>
+                        <dt class="margin-top-picard">Address</dt>
+                        <dd><a href="https://maps.google.com/maps?cid=9426287045452652682" target="_blank" rel="noopener">702 S Hill Park Dr, Ste 205<br>Puyallup, WA 98373<span class="sr-only"> (opens in new tab)</span></a></dd>
+                    </dl>
+                </address>
 
-        <nav aria-labelledby="footer-chd-heading">
-            <h3 id="footer-chd-heading">Your Data Rights</h3>
-            <ul>
-                <li><a href="{{ site.basePath }}consumer-health-data-privacy">Consumer Health Data Privacy</a></li>
-            </ul>
-        </nav>
-
-        <nav aria-labelledby="footer-legal-links-heading">
-            <h3 id="footer-legal-links-heading">Legal</h3>
-            <ul>
-                <li><a href="{{ site.basePath }}privacy-policy">Privacy Policy</a></li>
-                <li><a href="{{ site.basePath }}terms">Terms &amp; Conditions</a></li>
-                <li><a href="{{ site.basePath }}accessibility">Accessibility</a></li>
-            </ul>
-        </nav>
-
-        <h3>Important Disclosures</h3>
-        <p>
-            <small>{{ pageData.disclaimer | replace: "&", "&amp;" }}</small>
-        </p>        
-        
-        <p>
-            <small>{{ pageData.copyright | replace: "&", "&amp;" | replace: "©", "&copy;" }}</small>
-        </p>
-
-        <nav aria-label="Additional pages">
-            <ul>
-                <li><a href="{{ site.basePath }}credits">Credits</a></li>
-                <li><a href="{{ site.basePath }}sitemap">Sitemap</a></li>
-            </ul>
-        </nav>
-
-        {% if pageData.publishedSocialProfiles %}
-
-            <nav aria-label="Social media links">
+                <dl class="hours">
+                    <dt>Hours</dt>
+                    <dd>
+                        <span>Monday&ndash;Friday: <time datetime="09:30">9:30 AM</time>&ndash;<time datetime="17:30">5:30 PM</time> <abbr title="Pacific Time">PT</abbr></span><br>
+                        <span class="t-secondary">(closed weekends and holidays)</span>
+                    </dd>
+                </dl>
+            </div>
+            
+            <nav class="footer__quick-links" aria-labelledby="footer-quick-links-heading">
+                <h3 id="footer-quick-links-heading">Quick Links</h3>
                 <ul>
-                    {% for profileId in pageData.publishedSocialProfiles %}
-                        {% for profile in pageData.socialProfiles %}
-                            {% if profile.id == profileId %}
-                                <li>
-                                    <a href="{{ profile.url }}" target="_blank" rel="noopener">
-                                        <span>Follow us on <strong>{{ profile.name }}</strong></span>
-                                    </a>
-                                </li>
-                            {% endif %}
-                        {% endfor %}
-                    {% endfor %}
+                    <li><a href="{{ site.basePath }}">Home</a></li>
+                    <li><a href="{{ site.basePath }}medicare-101">Medicare 101</a></li>
+                    <li><a href="{{ site.basePath }}services">Our Services</a></li>
+                    <li><a href="{{ site.basePath }}about">About Us</a></li>
+                    <li><a href="{{ site.basePath }}contact">Contact Us</a></li>
                 </ul>
             </nav>
-        {% endif %}
-    </div>
+
+            <div class="footer__legal">
+                <h3>Your Data Rights</h3>
+                <ul>
+                    <li><a href="{{ site.basePath }}consumer-health-data-privacy">Consumer Health Data Privacy</a></li>
+                </ul>
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="{{ site.basePath }}privacy-policy">Privacy Policy</a></li>
+                    <li><a href="{{ site.basePath }}terms">Terms &amp; Conditions</a></li>
+                    <li><a href="{{ site.basePath }}accessibility">Accessibility</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__disclosure">
+                <h3>Important Disclosures</h3>
+                <p>
+                    <small>{{ pageData.disclaimer | replace: "&", "&amp;" }}</small>
+                </p>
+            </div>
+        </div><!-- .layout -->
+    </div><!-- .max-width-laptop -->
+
+    <div class="bg-gradient-1">
+        <div class="footer__content layout-spock max-width-laptop">
+            <ul class="social">
+                <li>
+                    <a href="https://www.linkedin.com/company/jrhealthins/" target="_blank" rel="noopener">
+                        <svg width="24" height="24" aria-hidden="true">
+                            <use href="#svg__icon-linkedin" />
+                        </svg>
+                        <span class="sr-only">Follow us on LinkedIn (opens in new tab)</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/jrhealthins" target="_blank" rel="noopener">
+                        <svg width="24" height="24" aria-hidden="true">
+                            <use href="#svg__icon-facebook" />
+                        </svg>
+                        <span class="sr-only">Follow us on Facebook (opens in new tab)</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="t-has-inline-links">
+                <p><small>Copyright &copy; {{ site.time | date: "%Y" }} {{ legalName }}. All rights reserved.</small></p>
+                <ul>
+                    <li><a href="{{ site.basePath }}credits">Credits</a></li>
+                    <li><a href="{{ site.basePath }}sitemap">Sitemap</a></li>
+                </ul>
+            </div>
+        </div><!-- .max-width-laptop -->
+    </div><!-- .bg-gradient-1 -->
 </footer>

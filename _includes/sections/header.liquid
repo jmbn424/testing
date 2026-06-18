@@ -1,17 +1,21 @@
-{% assign pageData = site.data.global %}
-<header>
-    <a href="#main">Skip to main content</a>
-    <div>
-        <a class="logo" href="{{ site.basePath }}">                        
-            <span>{{ pageData.companyName | replace: "&", "&amp;" }}</span>
+<header class="header">
+    <a class="header__skip" href="#main">Skip to main content</a>
+    <div class="header__content">
+        <a class="logo" href="/">
+            <svg width="184" height="34" aria-hidden="true">
+                <use href="#svg__logo-jrhealthins" />
+            </svg>
+            <span class="sr-only">{{ pageData.srName }}</span>
         </a>
-        <nav aria-label="Main navigation">
+
+        <nav class="menu" aria-label="Primary">
             <ul>
-                <li><a href="{{ site.basePath }}">Home</a></li>
-                <li><a href="{{ site.basePath }}services">Services</a></li>
-                <li><a href="{{ site.basePath }}medicare-101">Medicare 101</a></li>
-                <li><a href="{{ site.basePath }}about">About Us</a></li>
-                <li><a href="{{ site.basePath }}contact">Contact Us</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/medicare-101">Medicare 101</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li class="header__phone"><a href="tel:+12535288805">(253) 528-8805</a></li>
             </ul>
         </nav>
     </div>
