@@ -93,7 +93,7 @@
                 </li>
             </ul>
             <div class="t-has-inline-links">
-                <p><small>Copyright &copy; {{ site.time | date: "%Y" }} {{ legalName }}. All rights reserved.</small></p>
+                <p><small>Copyright &copy; {{ site.time | date: "%Y" }} {{ pageData.legalName | replace: "&", "&amp;" }}. All rights reserved.</small></p>
                 <ul>
                     <li><a href="{{ site.basePath }}credits">Credits</a></li>
                     <li><a href="{{ site.basePath }}sitemap">Sitemap</a></li>
