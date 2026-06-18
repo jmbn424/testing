@@ -1,0 +1,13 @@
+.logo {
+    display: block;
+    padding: 10px;
+    transform: translateX(-12px);
+
+    svg {
+        display: block;
+        width: 100%;
+        max-width: 184px;
+        max-height: 34px;
+        height: auto;
+    }
+}

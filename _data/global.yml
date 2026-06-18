@@ -48,7 +48,7 @@ licensedStates:
 - OR
 - TN
 - WA
-SMSProgramIsLive: false
+SMSProgramIsLive: true
 
 # TODO: Incorporate more "switchboard" config options around compliance state setting into this root data config file.
 # TODO: Add more fields to map to schema.org / structured data fields for SEO

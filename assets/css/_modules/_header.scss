@@ -1,0 +1,114 @@
+.header {
+    width: 100%;
+    background: rgba(255,255,255,0.925);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.033);
+    min-height: 90px;
+    border-bottom: 4px solid $accent-2;
+    position: sticky;
+    z-index: 9;
+    top: 0;
+    left: 0;
+
+    .header__skip {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        padding: 6px 20px;
+        position: fixed;
+        top: 26px;
+        left: 48px;
+        transform: translateX(calc(-100% - 48px));
+        height: 48px;
+        transition: transform 0.2s ease,
+                    color 0.2s ease;
+        z-index: 7;
+
+        &:focus {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        svg {
+            margin-left: 16px;
+            width: 32px;
+            height: 22px;
+            transition: fill 0.2s ease;
+        }
+
+        &:hover {
+            svg {
+                fill: #fb2f8a;
+            }
+        }
+    }
+
+    .header__content {
+        position: relative;
+        min-height: 96px;
+        display: flex;
+        // justify-content: center;
+        align-items: center;
+        z-index: 6;
+        max-width: 1440px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        padding: 0 24px;
+
+        nav {
+            transform: translateX(16px);
+            margin-left: auto;
+
+            ul {
+                margin: 0;
+                padding: 0;
+                display: flex;
+                // gap: 4vw;
+                list-style: none;
+
+                a {
+                    display: block;
+                    color: #575260;
+                    text-decoration: none;
+                    padding: 10px 16px;
+                    font-weight: 700;
+                    font-size: 18px;
+
+                    &:hover {
+                        color: #000;
+                        text-decoration: underline;
+                    }
+                }
+
+                .menu__active {
+                    position: relative;
+                    
+                    a {
+                        color: #000;
+                    }
+
+                    // &::after {
+                    //     content: "";
+                    //     display: block;
+                    //     position: absolute;
+                    //     width: 100%;
+                    //     height: 4px;
+                    //     bottom: 0;
+                    //     background: black;
+                    // }
+                }
+
+                .header__phone {
+                    border-left: 1px solid #bbb;
+                    margin-left: 15px;
+                    padding-left: 15px;
+
+                    a {
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+    }
+}
