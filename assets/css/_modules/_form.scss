@@ -1,0 +1,116 @@
+.form {
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 700;
+    }
+
+    input:not([type="checkbox"]),
+    textarea,
+    select,
+    button {
+        display: block;
+        appearance: none;
+        margin: 0;
+        border: none;
+        border-radius: 0;
+        width: 100%;
+        box-sizing: border-box;
+
+        &::placeholder {
+            color: #757575;
+            font-weight: 300;
+        }
+    }
+
+    input:not([type="checkbox"]),
+    textarea,
+    select {
+        padding: 15px 20px;
+        background: #fff;
+        border-radius: 8px;
+    }
+
+    .form__field {
+        position: relative;
+
+        & + .form__field {
+            margin-top: 24px;
+        }
+    }
+
+    .form__field--required {
+        label {
+            font-weight: 700;
+        }
+    }
+
+    button {
+        cursor: pointer;
+        background: black;
+        color: #fff;
+        margin-top: 36px;
+        padding: 15px 20px;
+        border-radius: 8px;
+        font-size: 16px !important;
+        background: #A285DF;
+        background-color: #333;
+        font-weight: bold;
+        transition: background-color 0.33s ease;
+
+        // Normal text definition
+            // Less than 18.66px of any weight - 4.5:1
+            // Between 18.66 and 24px of normal weight - 4.5:1
+
+        // Large text definition
+            // 18.66px or larger and bold - 3:1
+            // 24px or larger and normal weight - 3:1
+
+        // UI elements definition
+            // (e.g. form input borders) - 3:1
+
+        // Blue variants
+            // against white
+                // AA Large text & UI: #0A9AF4 - 3.02:1
+                // AA normal text: #0074e7 - 4.51:1
+
+            // against offwhite
+                // AA Large text & UI: #068CEF - 3.01:1
+                // AA normal text: #0067dc - 4.55:1
+
+        // Pink variants
+            // against white
+                // AA large text & UI: $pink (#FB2F8A) - 3.57:1
+                // AA normal text: #e02176 - 4.51:1
+
+            // against offwhite
+                // AA large text & UI: $pink (#FB2F8A) - 3.08:1
+                // AA normal text: #cf186a - 4.53:1
+
+
+        &:hover {
+            background: #0A9AF4;
+        }
+    }
+
+    button,
+    select {
+        cursor: pointer;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    .text-secondary {
+        color: #6C6C6C;
+        font-weight: 300;
+        padding-left: 2px;
+        letter-spacing: 0.01em;
+    }
+    
+    fieldset {
+        padding: 0;
+        border: none;
+    }
+}

@@ -7,8 +7,10 @@
         <main id="main" tabindex="-1">
             {{ content }}
             {% if page.document %}
-                <section class="md">
-                    {{ page.document | markdownify }}
+                <section>
+                    <div class="md max-width-tablet-portrait">
+                        {{ page.document | markdownify }}
+                    </div>
                 </section>
             {% endif %}
         </main>

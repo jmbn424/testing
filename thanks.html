@@ -5,11 +5,11 @@ description: Your form submission was successful.
 excludeFromSitemap: true
 ---
 {% assign pageData = site.data.global %}
-<section class="hero">
-    <h1>Messaged received!</h1>
-</section>
+{% include sections/hero.liquid text="Messaged received!" %}
 <section>
-    <h2>Thank you for getting in touch.</h2>
-    <p>Your form submission was successful. We will respond as soon as we can.</p>
-    <p><a href="./contact">Send another message</a> or go back to the <a href="./">Home</a> page.</p>
+    <div class="max-width-laptop">
+        <h2>Thank you for getting in touch.</h2>
+        <p>Your form submission was successful. We will respond as soon as we can.</p>
+        <p><a href="./contact">Send another message</a> or go back to the <a href="./">Home</a> page.</p>
+    </div>
 </section>

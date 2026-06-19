@@ -5,52 +5,54 @@ https://github.com/jmbn424/website-documentation/blob/main/technical/lead-form-c
 
 {% endcomment %}
 
-<section>
-    <h2>Get in touch</h2>
-    <form class="form" action="https://app.agencybloc.com/fp/webToLead/v1/BBZXH5SZLV4KWOOSRUGT/" method="post">
-        <div class="form__field">
-            <label for="field-first-name">First Name</label>
-            <input id="field-first-name" name="firstName" type="text" autocomplete="given-name" maxlength="64" required size="40" value="">
-        </div>
-        <div class="form__field">
-            <label for="field-last-name">Last Name</label>
-            <input id="field-last-name" name="lastName" type="text" autocomplete="family-name" maxlength="64" required size="40" value="">
-        </div>
-        <div class="form__field">
-            <label for="field-phone">Phone Number</label>
-            <input id="field-phone" name="cellPhone" type="tel" autocomplete="tel" pattern="\+?1?[ .\-]?\(?\d{3}\)?[ .\-]?\d{3}[ .\-]?\d{4}" minlength="10" maxlength="20" required size="40" value="">
-        </div>
-        <div class="form__field">
-            <label for="field-email">Email Address <span class="text-secondary">(optional)</span></label>
-            <input id="field-email" name="email" type="email" autocomplete="email" maxlength="254" size="40" value="">
-        </div>
-        <div class="form__field is-visually-hidden" aria-hidden="true">
-            <label for="field-website">Home Page URL <span class="text-secondary">(optional)</span></label>
-            <input id="field-website" name="_Website" type="text" tabindex="-1" autocomplete="new-password" data-1p-ignore data-lpignore="true" placeholder="https://example.com" size="40" value="">
-        </div>
-        <div class="form__field">
-            <label for="field-message">Message <span class="text-secondary">(optional)</span></label>
-            <textarea id="field-message" name="custom_Message" maxlength="800" cols="40" rows="5"></textarea>
-        </div>
-        <fieldset class="form__consent">
-            <legend class="is-visually-hidden">Consent</legend>
-            <p>
-                <small>By submitting this form, you agree that we may contact you about your request by phone and email using the details you provide. Agreeing to text messages is optional and is never a condition of getting help from us or of enrolling in any plan.</small>
-            </p>
-            <p class="form__field--checkbox">
-                <input type="checkbox" name="custom_Terms Consent" value="1" required aria-labelledby="terms-consent-text">
-                <span id="terms-consent-text">I agree to the <a href="./terms">Terms &amp; Conditions</a>, and I acknowledge the <a href="./privacy-policy">Privacy Policy</a> and <a href="./consumer-health-data-privacy">Consumer Health Data Privacy Policy</a>.</span>
-            </p>
-            {% if site.data.global.SMSProgramIsLive == true %}
-                <p class="form__field--checkbox">
-                    <input type="checkbox" name="custom_SMS Consent" value="1" aria-labelledby="sms-consent-text">
-                    <span id="sms-consent-text"><span class="text-secondary">(Optional)</span> Text me. I agree to receive customer-care text messages from J&R Health Insurance at the phone number I provide. Consent is not a condition of getting help or of buying any insurance product. Message frequency varies. Message and data rates may apply. Reply STOP to cancel or HELP for help. See our <a href="./privacy-policy">Privacy Policy</a> and <a href="./terms">Terms &amp; Conditions</a>.</span>
+<section class="bg-light-gray">
+    <div class="max-width-mobile-landscape">
+        <h2 class="t-align-center">Get in touch</h2>
+        <form class="form" action="https://app.agencybloc.com/fp/webToLead/v1/BBZXH5SZLV4KWOOSRUGT/" method="post">
+            <div class="form__field">
+                <label for="field-first-name">First Name</label>
+                <input id="field-first-name" name="firstName" type="text" autocomplete="given-name" maxlength="64" required size="40" value="">
+            </div>
+            <div class="form__field">
+                <label for="field-last-name">Last Name</label>
+                <input id="field-last-name" name="lastName" type="text" autocomplete="family-name" maxlength="64" required size="40" value="">
+            </div>
+            <div class="form__field">
+                <label for="field-phone">Phone Number</label>
+                <input id="field-phone" name="cellPhone" type="tel" autocomplete="tel" pattern="\+?1?[ .\-]?\(?\d{3}\)?[ .\-]?\d{3}[ .\-]?\d{4}" minlength="10" maxlength="20" required size="40" value="">
+            </div>
+            <div class="form__field">
+                <label for="field-email">Email Address <span class="text-secondary">(optional)</span></label>
+                <input id="field-email" name="email" type="email" autocomplete="email" maxlength="254" size="40" value="">
+            </div>
+            <div class="form__field is-visually-hidden" aria-hidden="true">
+                <label for="field-website">Home Page URL <span class="text-secondary">(optional)</span></label>
+                <input id="field-website" name="_Website" type="text" tabindex="-1" autocomplete="new-password" data-1p-ignore data-lpignore="true" placeholder="https://example.com" size="40" value="">
+            </div>
+            <div class="form__field">
+                <label for="field-message">Message <span class="text-secondary">(optional)</span></label>
+                <textarea id="field-message" name="custom_Message" maxlength="800" cols="40" rows="5"></textarea>
+            </div>
+            <fieldset class="form__consent">
+                <legend class="is-visually-hidden">Consent</legend>
+                <p>
+                    <small>By submitting this form, you agree that we may contact you about your request by phone and email using the details you provide. Agreeing to text messages is optional and is never a condition of getting help from us or of enrolling in any plan.</small>
                 </p>
-            {% endif %}
-        </fieldset>
-        <div class="form__submit form-action">
-            <button type="submit">Submit</button>
-        </div>
-        <p><small>This is a solicitation for insurance. A licensed insurance agent/broker may contact you. There is no cost to work with our brokers, and no obligation to enroll.</small></p>
-    </form>
+                <p class="form__field--checkbox">
+                    <input type="checkbox" name="custom_Terms Consent" value="1" required aria-labelledby="terms-consent-text">
+                    <span id="terms-consent-text">I agree to the <a href="./terms">Terms &amp; Conditions</a>, and I acknowledge the <a href="./privacy-policy">Privacy Policy</a> and <a href="./consumer-health-data-privacy">Consumer Health Data Privacy Policy</a>.</span>
+                </p>
+                {% if site.data.global.SMSProgramIsLive == true %}
+                    <p class="form__field--checkbox">
+                        <input type="checkbox" name="custom_SMS Consent" value="1" aria-labelledby="sms-consent-text">
+                        <span id="sms-consent-text"><span class="text-secondary">(Optional)</span> Text me. I agree to receive customer-care text messages from J&R Health Insurance at the phone number I provide. Consent is not a condition of getting help or of buying any insurance product. Message frequency varies. Message and data rates may apply. Reply STOP to cancel or HELP for help. See our <a href="./privacy-policy">Privacy Policy</a> and <a href="./terms">Terms &amp; Conditions</a>.</span>
+                    </p>
+                {% endif %}
+            </fieldset>
+            <div class="form__submit form-action">
+                <button type="submit">Submit</button>
+            </div>
+            <p><small>This is a solicitation for insurance. A licensed insurance agent/broker may contact you. There is no cost to work with our brokers, and no obligation to enroll.</small></p>
+        </form>
+    </div>
 </section>

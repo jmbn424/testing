@@ -17,6 +17,10 @@ body {
     color: #575260;
 }
 
+small {
+    font-size: 16px;
+}
+
 // TODO: refactor CSS and organize into muodules.
 
 header ul,
@@ -29,7 +33,7 @@ footer ul {
 
 a {
     text-decoration: none;
-    color: #575260;
+    color: #0067DC;
 
     &:hover {
         color: #000;
@@ -38,11 +42,51 @@ a {
 }
 
 main {
-    margin: 0 auto;
-    max-width: 1392px;
-    padding-top: 100px;
+    & > :first-child {
+        padding-top: 100px;
+    }
 }
 
 .section {
     scroll-margin-top: 100px; /* Replace 80px with your exact header height */
+}
+
+.max-width-mobile-landscape,
+.max-width-laptop,
+.max-width-tablet-portrait {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.max-width-tablet-portrait {
+    max-width: 960px;
+    max-width: 800px;
+    font-size: 20px;
+    font-size: 18px;
+    line-height: 1.8;
+    padding: 40px 0 80px 0;
+}
+
+.max-width-mobile-landscape {
+    max-width: 720px;
+}
+
+.hero {
+    text-align: center;
+
+    .max-width-mobile-landscape {
+        padding: 24px 0;
+    }
+
+    &.hero--large {
+        .max-width-mobile-landscape {
+            padding: 64px 0;
+        } 
+    }
+}
+
+.t-align-center {
+    text-align: center;
 }
