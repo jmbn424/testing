@@ -6,6 +6,7 @@ body {
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 100px;
 }
 
 body {
@@ -39,4 +40,9 @@ a {
 main {
     margin: 0 auto;
     max-width: 1392px;
+    padding-top: 100px;
+}
+
+.section {
+    scroll-margin-top: 100px; /* Replace 80px with your exact header height */
 }

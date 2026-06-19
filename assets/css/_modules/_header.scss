@@ -3,9 +3,9 @@
     background: rgba(255,255,255,0.925);
     backdrop-filter: blur(15px);
     box-shadow: 0 10px 40px rgba(0,0,0,0.033);
-    min-height: 90px;
+    min-height: 96px;
     border-bottom: 4px solid $accent-2;
-    position: sticky;
+    position: fixed;
     z-index: 9;
     top: 0;
     left: 0;
@@ -71,9 +71,10 @@
                     display: block;
                     color: #575260;
                     text-decoration: none;
-                    padding: 10px 16px;
+                    padding: 8px 16px;
                     font-weight: 700;
                     font-size: 18px;
+                    font-size: 20px;
 
                     &:hover {
                         color: #000;
