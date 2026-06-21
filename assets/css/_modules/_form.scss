@@ -6,7 +6,7 @@
         font-weight: 700;
     }
 
-    input:not([type="checkbox"]),
+    input,
     textarea,
     select,
     button {
@@ -14,7 +14,6 @@
         appearance: none;
         margin: 0;
         border: none;
-        border-radius: 0;
         width: 100%;
         box-sizing: border-box;
         font-size: 16px;
@@ -31,6 +30,15 @@
         padding: 20px 24px;
         background: #fff;
         border-radius: 8px;
+    }
+
+    input[type="checkbox"] {
+        all: revert;
+        width: 20px;
+        height: 20px;
+        background: #fff;
+        border-radius: 4px;
+        vertical-align: middle;
     }
 
     .form__field {

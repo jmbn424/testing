@@ -40,4 +40,43 @@
     &, * {
         display: inline;
     }
+
+    ul {
+        li {
+            display: inline-block;
+            position: relative;
+
+            a {
+                text-decoration: none;
+                display: inline-block;
+                // outline: 1px solid yellow;
+                padding: 12px;
+
+                &:hover {
+                    text-decoration: underline;
+                    color: #fff;
+                }
+            }
+
+            &:first-child {
+                a {
+                    padding-left: 8px;
+                }
+            }
+
+            & + li {
+                &:after {
+                    position: absolute;
+                    content: "";
+                    display: block;
+                    width: 1px;
+                    height: 16px;
+                    background: rgba(255,255,255,0.5);
+                    top: 50%;
+                    left: -2px;
+                    transform: translateY(-50%);
+                }
+            }
+        }
+    }
 }

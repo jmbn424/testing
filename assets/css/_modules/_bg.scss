@@ -2,8 +2,11 @@
 .bg-gradient-1 {
     background: #64479E linear-gradient(90.33deg, #F32883 0%, #AA3591 23.43%, #785CB5 51.27%, #3971D4 77.94%, #2087E5 89.54%, #0EA4F7 100%);
 
-    *,
-    a {
+    * {
+        color: #fff;
+    }
+
+    a:hover {
         color: #fff;
     }
 }
