@@ -1,0 +1,25 @@
+{%- comment -%}
+    Renders the active licensed states as an inline prose fragment with an Oxford
+    comma + "and" before the last (e.g. "Washington, Oregon, Georgia, and Tennessee").
+    Active set + order come from global.yml `jurisdictions` (the switchboard map, in
+    canonical display order); display names come from reference.yml `states`. Captured
+    by the layouts and substituted for the ${licensedStates} token in page prose, and
+    is the human-readable companion to JSON-LD areaServed (same source, same order).
+{%- endcomment -%}
+{%- assign _states = '' -%}
+{%- for _j in site.data.global.jurisdictions -%}{%- if _j[1] -%}{%- assign _states = _states | append: _j[0] | append: ',' -%}{%- endif -%}{%- endfor -%}
+{%- assign _states = _states | split: ',' -%}
+{%- assign _n = _states | size -%}
+{%- assign _out = '' -%}
+{%- for abbr in _states -%}
+    {%- assign _nm = site.data.reference.states[abbr].name -%}
+    {%- if forloop.first -%}
+        {%- assign _out = _nm -%}
+    {%- elsif forloop.last -%}
+        {%- if _n > 2 -%}{%- assign _out = _out | append: ', and ' | append: _nm -%}
+        {%- else -%}{%- assign _out = _out | append: ' and ' | append: _nm -%}{%- endif -%}
+    {%- else -%}
+        {%- assign _out = _out | append: ', ' | append: _nm -%}
+    {%- endif -%}
+{%- endfor -%}
+{{- _out -}}

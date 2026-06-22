@@ -1,0 +1,11 @@
+# Cloudflare Pages redirects — source-path aliases → canonical pages (301 permanent).
+# NOTE: this is a Cloudflare Pages feature. It is INERT on the GitHub Pages testing host and
+# takes effect only once the site is served from Cloudflare Pages. It deploys only because it is
+# listed in _config.yml `include:` — Jekyll ignores underscore-prefixed files by default.
+
+/about-us              /about    301
+/contact-us            /contact  301
+/tos                   /terms    301
+/terms-and-conditions  /terms    301
+/terms-conditions      /terms    301
+/terms-of-service      /terms    301

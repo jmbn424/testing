@@ -2,21 +2,14 @@
 <html lang="en-US">
     {% include head.liquid %}
     <body>
-        {% include sections/header.liquid %}
+        {% capture pageBody %}{% include sections/header.liquid %}
 
         <main id="main" tabindex="-1">
             {{ content }}
-            {% if page.document %}
-                <section>
-                    <div class="md max-width-tablet-portrait">
-                        {{ page.document | markdownify }}
-                    </div>
-                </section>
-            {% endif %}
         </main>
 
-        {% include sections/footer.liquid %}
-        {% include svg.liquid %}
+        {% include sections/footer.liquid %}{% endcapture %}{{ pageBody }}
+        {% include svg.liquid usage=pageBody %}
         {% include scripts.liquid %}
     </body>
 </html>

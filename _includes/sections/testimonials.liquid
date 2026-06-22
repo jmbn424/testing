@@ -1,0 +1,15 @@
+{%- comment -%}
+    Reusable "Reviews" module (Home, About; future /testimonials). Outputs markdown for the
+    sections engine. The curated review carousel is gated on `testimonialsShown` (OFF until the
+    FMO marketing review + counsel FTC pass clear it, per canon testimonials-display: genuine +
+    unedited, last names obfuscated, developer reviews excluded/disclosed, "results vary"
+    framing). Until then, an honest word-of-mouth blurb, no reviews shown.
+{%- endcomment -%}
+{%- assign siteData = site.data.global -%}
+## What our clients say
+
+We are a word-of-mouth business. Most of the people we help come to us through a friend or a family member, and we are grateful for every kind word.
+{%- if siteData.testimonialsShown %}
+
+{% comment %} testimonialsShown ON: render the curated review carousel here (per testimonials-display). TBD: curated reviews. {% endcomment %}
+{%- endif %}

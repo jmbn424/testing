@@ -1,4 +1,4 @@
-{% assign pageData = site.data.global %}
+{% assign siteData = site.data.global %}{%- comment -%}Active jurisdiction codes in canonical display order, from the jurisdictions switchboard map; feeds JSON-LD areaServed (the prose token uses _includes/licensed-states.liquid off the same source).{%- endcomment -%}{%- assign activeStates = '' -%}{%- for j in siteData.jurisdictions -%}{%- if j[1] -%}{%- assign activeStates = activeStates | append: j[0] | append: ',' -%}{%- endif -%}{%- endfor -%}{% assign activeStates = activeStates | split: ',' %}
 <head>
     <!-- Document -->
     <meta charset="utf-8">
@@ -6,8 +6,8 @@
     <meta name="format-detection" content="telephone=no">
 
     <!-- SEO -->
-    {% assign pageTitle = pageData.defaultPageTitle %}
-    {% assign pageDescription = pageData.defaultPageDescription %}
+    {% assign pageTitle = siteData.defaultPageTitle %}
+    {% assign pageDescription = siteData.defaultPageDescription %}
     {% if page.title %}
         {% assign pageTitle = page.title %}
     {% endif %}
@@ -16,35 +16,44 @@
     {% endif %}
     <title>{{ pageTitle | replace: "&", "&amp;" }}</title>
     <meta name="description" content="{{ pageDescription | replace: "&", "&amp;" }}">
-    {% unless page.excludeFromSitemap == true %}
-        <link rel="canonical" href="{{ page.canonicalSlug }}">
-    {% endunless %}
+    {% comment %} Deploy-exposure gates: the global switches in _data/global.yml, each AND-ed with the per-page excludeFromSitemap opt-out. siteIsIndexable=false (e.g. the testing deploy) emits a site-wide noindex and drops the canonical; showStructuredData / includeSocialShareMeta gate the JSON-LD and the og/twitter block independently, so a non-indexable deploy can still emit testable cards + structured data. {% endcomment %}
+    {% assign showCanonical = false %}{% if siteData.siteIsIndexable and page.excludeFromSitemap != true %}{% assign showCanonical = true %}{% endif %}
+    {% assign showSchema = false %}{% if siteData.showStructuredData and page.excludeFromSitemap != true %}{% assign showSchema = true %}{% endif %}
+    {% assign showSocial = false %}{% if siteData.includeSocialShareMeta and page.excludeFromSitemap != true %}{% assign showSocial = true %}{% endif %}
+    {% unless siteData.siteIsIndexable %}<meta name="robots" content="noindex, nofollow">{% endunless %}
+    {% comment %} Canonical absolute URL from the single source of truth (site.data.global.url, which carries the trailing slash): home -> base URL, sub-pages -> base + extensionless path. {% endcomment %}
+    {% assign canonicalUrl = page.url | remove_first: "/" | replace: "index.html", "" | replace: ".html", "" | prepend: siteData.url %}
+    {% if showCanonical %}
+        <link rel="canonical" href="{{ canonicalUrl }}">
+    {% endif %}
 
     <!-- Appearance -->
     <meta name="theme-color" content="#ffffff">
-    <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ site.basePath }}assets/fonts/inter-variable.woff2">
-    <link rel="stylesheet" href="{{ site.basePath }}assets/css/main.css">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ siteData.basePath }}assets/fonts/inter-variable.woff2">
+    <link rel="stylesheet" href="{{ siteData.basePath }}assets/css/main.css">
 
     <!-- Icons -->
-    <link rel="icon" href="{{ site.basePath }}favicon.ico" sizes="any">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ site.basePath }}assets/images/ui/apple-touch-icon.png">
-    <link rel="manifest" href="{{ site.basePath }}manifest.webmanifest">
+    <link rel="icon" href="{{ siteData.basePath }}favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ siteData.basePath }}assets/images/ui/apple-touch-icon.png">
+    <link rel="manifest" href="{{ siteData.basePath }}manifest.webmanifest">
 
-    {% unless page.excludeFromSitemap == true %}
+    {% if showSocial %}
         <!-- Sharing -->
         <meta property="og:type" content="website">
         <meta property="og:title" content="{{ pageTitle }}">
         <meta property="og:description" content="{{ pageDescription }}">
-        <meta property="og:image" content="https://jrhealthins.org/assets/images/ui/social.png">
+        <meta property="og:image" content="{{ siteData.url }}assets/images/ui/social.png">
         <meta property="og:image:alt" content="J&amp;R Health Insurance">
         <meta property="og:image:type" content="image/png">
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">
-        <meta property="og:url" content="https://jrhealthins.org/">
+        <meta property="og:url" content="{{ canonicalUrl }}">
         <meta property="og:site_name" content="J&amp;R Health Insurance">
         <meta property="og:locale" content="en_US">
         <meta name="twitter:card" content="summary_large_image">
+    {% endif %}
 
+    {% if showSchema %}
         <!-- Structured Data -->
         <script type="application/ld+json">
             {
@@ -52,35 +61,36 @@
                 "@graph": [
                     {
                         "@type": "WebSite",
-                        "@id": "https://jrhealthins.org/#website",
-                        "url": "https://jrhealthins.org/",
+                        "@id": "{{ siteData.url }}#website",
+                        "url": "{{ siteData.url }}",
                         "name": "J&R Health Insurance",
-                        "publisher": { "@id": "https://jrhealthins.org/#organization" },
+                        "publisher": { "@id": "{{ siteData.url }}#organization" },
                         "inLanguage": "en-US"
                     },
                     {
-                        "@type": "WebPage",
-                        "@id": "https://jrhealthins.org/#webpage",
-                        "url": "https://jrhealthins.org/",
-                        "name": "Washington Medicare Brokers | J&R Health Insurance",
-                        "description": "Family-owned Medicare brokerage serving WA, OR, GA & TN. Free, personalized help for seniors and veterans choosing plans from all major carriers.",
-                        "isPartOf": { "@id": "https://jrhealthins.org/#website" },
-                        "about": { "@id": "https://jrhealthins.org/#organization" },
+                        "@type": "{{ page.schemaType | default: 'WebPage' }}",
+                        "@id": "{{ canonicalUrl }}#webpage",
+                        "url": "{{ canonicalUrl }}",
+                        "name": {{ pageTitle | jsonify }},
+                        "description": {{ pageDescription | jsonify }},
+                        "isPartOf": { "@id": "{{ siteData.url }}#website" },
+                        "about": { "@id": "{{ siteData.url }}#organization" },{% if page.lastUpdated %}
+                        "dateModified": "{{ page.lastUpdated | date_to_xmlschema }}",{% endif %}
                         "inLanguage": "en-US"
                     },
                     {
                         "@type": "InsuranceAgency",
-                        "@id": "https://jrhealthins.org/#organization",
+                        "@id": "{{ siteData.url }}#organization",
                         "name": "J&R Health Insurance",
-                        "url": "https://jrhealthins.org/",
+                        "url": "{{ siteData.url }}",
                         "logo": {
                             "@type": "ImageObject",
-                            "url": "https://jrhealthins.org/assets/images/ui/icon-512.png",
+                            "url": "{{ siteData.url }}assets/images/ui/icon-512.png",
                             "width": 512,
                             "height": 512,
                             "caption": "J&R Health Insurance"
                         },
-                        "image": "https://jrhealthins.org/assets/images/ui/social.png",
+                        "image": "{{ siteData.url }}assets/images/ui/social.png",
                         "telephone": "+12535288805",
                         "faxNumber": "+12533638808",
                         "email": "info@jrhealthins.org",
@@ -103,11 +113,8 @@
                             "opens": "09:30",
                             "closes": "17:30"
                         }],
-                        "areaServed": [
-                            { "@type": "State", "name": "Washington", "sameAs": "https://www.wikidata.org/wiki/Q1223" },
-                            { "@type": "State", "name": "Oregon", "sameAs": "https://www.wikidata.org/wiki/Q824" },
-                            { "@type": "State", "name": "Georgia", "sameAs": "https://www.wikidata.org/wiki/Q1428" },
-                            { "@type": "State", "name": "Tennessee", "sameAs": "https://www.wikidata.org/wiki/Q1509" }
+                        "areaServed": [{% for abbr in activeStates %}{% assign st = site.data.reference.states[abbr] %}
+                            { "@type": "State", "name": "{{ st.name }}", "sameAs": "{{ st.wikidata }}" }{% unless forloop.last %},{% endunless %}{% endfor %}
                         ],
                         "hasOfferCatalog": {
                             "@type": "OfferCatalog",
@@ -133,13 +140,12 @@
                             }]
                         },
                         "hasMap": "https://maps.google.com/maps?cid=9426287045452652682",
-                        "sameAs": [
-                            "https://www.linkedin.com/company/jrhealthins/",
-                            "https://www.facebook.com/jrhealthins"
+                        "sameAs": [{% for handle in siteData.publishedSocialProfiles %}{% assign profile = siteData.socialProfiles | where: "id", handle | first %}
+                            "{{ profile.url }}"{% unless forloop.last %},{% endunless %}{% endfor %}
                         ]
                     }
                 ]
             }
         </script>
-    {% endunless %}
+    {% endif %}
 </head>

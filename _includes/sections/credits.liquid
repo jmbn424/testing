@@ -1,0 +1,19 @@
+{%- comment -%}
+    Renders the /credits asset registry (_data/lists/credits.yml) as markdown for the sections
+    engine. Plugin-free (GitHub-Pages-safe). "Subscribe to an asset": add an entry under `media`
+    in the data file when an attribution-required image is used, and it appears here automatically.
+{%- endcomment -%}
+{%- assign credits = site.data.lists.credits -%}
+{%- if credits.media == empty -%}
+We are not currently using any attribution-required images. When we do, we credit each one here, per its license.
+{%- else -%}
+We use the following media under license:
+{% for m in credits.media %}
+- "{{ m.title }}" by {{ m.creator }} ({{ m.license }}{% if m.source %}, [source]({{ m.source }}){% endif %}{% if m.deed %}, [license]({{ m.deed }}){% endif %})
+{%- endfor %}
+{%- endif %}
+
+## Fonts and software
+{% for s in credits.software %}
+- [{{ s.name }}]({{ s.url }}) by {{ s.creator }}, under the {{ s.license }}{% if s.note %} ({{ s.note }}){% endif %}
+{%- endfor %}

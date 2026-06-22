@@ -1,9 +1,36 @@
 ---
 excludeFromSitemap: true
 ---
-# robots.txt for https://jmbn424.github.io/testing/
+{%- assign g = site.data.global -%}
+{%- if g.siteIsIndexable -%}
+# robots.txt for {{ g.url }}
 
 User-agent: *
 Allow: /
+{%- unless g.allowLLM %}
 
-Sitemap: https://jmbn424.github.io/testing/sitemap.xml
+# AI / LLM crawlers are not permitted here. This is an advisory signal only: well-behaved
+# crawlers honor it, but enforcement is done at the Cloudflare dashboard (AI Crawl Control).
+# See _docs/ai-crawlers.md.
+User-agent: GPTBot
+Disallow: /
+
+User-agent: OAI-SearchBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+{%- endunless %}
+
+Sitemap: {{ g.url }}sitemap.xml
+{%- else -%}
+# Non-indexable deploy (e.g. testing). Keep this site out of search engines.
+User-agent: *
+Disallow: /
+{%- endif %}

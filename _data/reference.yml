@@ -1,0 +1,16 @@
+# Canonical reference / lookup data — NOT config (config lives in global.yml).
+# A filtered subset of the comprehensive jurisdictions table at
+# _context/knowledge/tpmo-jurisdictions.md: display name + ready-to-use Wikidata
+# sameAs URL per state, keyed by USPS code. The active subset + the order are
+# selected by the `jurisdictions` switchboard map in global.yml; these values feed the
+# ${licensedStates} prose token (_includes/licensed-states.liquid) and structured data
+# (InsuranceAgency.areaServed in _includes/head.liquid). This is a keyed lookup, so the
+# row order here is cosmetic — listed in canonical display order (WA, OR, CA, NV, GA, TN)
+# to mirror jurisdictions. Add a row when J&R expands, then flip it true in jurisdictions.
+states:
+  WA: { name: Washington, wikidata: "https://www.wikidata.org/wiki/Q1223" }
+  OR: { name: Oregon,     wikidata: "https://www.wikidata.org/wiki/Q824"  }
+  CA: { name: California, wikidata: "https://www.wikidata.org/wiki/Q99"   }
+  NV: { name: Nevada,     wikidata: "https://www.wikidata.org/wiki/Q1227" }
+  GA: { name: Georgia,    wikidata: "https://www.wikidata.org/wiki/Q1428" }
+  TN: { name: Tennessee,  wikidata: "https://www.wikidata.org/wiki/Q1509" }

@@ -1,15 +1,13 @@
 ---
-layout: default
-canonicalSlug: https://jmbn424.github.io/testing/credits
+layout: sections
 title: Credits | J&R Health Insurance
-document: |
+heading: Credits
+sections:
+- md: |
     ## Image and media attributions
 
     We credit each image and icon according to its license:
     - Attribution-required: Flickr CC BY (photographer + source URL + CC BY deed link); Noun Project free-tier ("Icon by [creator] from the Noun Project").
     - No-attribution: Unsplash / Pexels / Pixabay standard downloads and Flickr public-domain (CC0 / PDM / US Gov Works / Flickr Commons), courtesy credit optional.
-
-    We list attribution-required assets here, per asset, as each one is used.
+- include: sections/credits
 ---
-{% assign pageData = site.data.global %}
-{% include sections/hero.liquid text="Credits" %}

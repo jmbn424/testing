@@ -1,0 +1,24 @@
+# /credits content registry — plugin-free, GitHub-Pages-safe. Rendered by
+# _includes/sections/credits.liquid through the sections engine.
+#
+# "Subscribe to an asset" workflow: when you use an attribution-required image on the site, add an
+# entry under `media` here and it appears on /credits automatically. (Fully-automatic
+# "used anywhere on the site → listed" detection would need a Jekyll generator plugin to scan the
+# rendered output; we are deliberately staying within GitHub Pages safe-mode until well after
+# launch, so the subscription is this one-line registry entry, not a build-time scan.)
+
+# Attribution-required media (Flickr CC BY, Noun Project free tier). Empty until such an asset is used.
+media: []
+  # - title: Example photo
+  #   creator: Jane Doe
+  #   license: CC BY 4.0
+  #   source: https://www.flickr.com/photos/...
+  #   deed: https://creativecommons.org/licenses/by/4.0/
+
+# Fonts & software (site-wide; credited as a courtesy / per license).
+software:
+  - name: Inter
+    creator: Rasmus Andersson
+    url: https://github.com/rsms/inter
+    license: SIL Open Font License 1.1
+    note: the site's typeface, self-hosted

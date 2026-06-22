@@ -1,11 +1,11 @@
-{% assign pageData = site.data.global %}
-{% assign companyName = pageData.companyName | replace: "&", "&amp;" %}
+{% assign siteData = site.data.global %}
+{% assign companyName = siteData.companyName | replace: "&", "&amp;" %}
 <footer class="footer">
     <div class="footer__content max-width-laptop layout-bones">
         <div class="footer__brand">
             <h2>
-                <a href="{{ pageData.url }}/">
-                    <span class="sr-only">{{ pageData.srName }}</span>
+                <a href="{{ siteData.url }}">
+                    <span class="sr-only">{{ siteData.srName }}</span>
                     <svg width="184" height="34" aria-hidden="true"><use href="#svg__logo-jrhealthins" /></svg>
                 </a>
             </h2>
@@ -42,31 +42,31 @@
             <nav class="footer__quick-links" aria-labelledby="footer-quick-links-heading">
                 <h3 id="footer-quick-links-heading">Quick Links</h3>
                 <ul>
-                    <li><a href="{{ site.basePath }}">Home</a></li>
-                    <li><a href="{{ site.basePath }}medicare-101">Medicare 101</a></li>
-                    <li><a href="{{ site.basePath }}services">Our Services</a></li>
-                    <li><a href="{{ site.basePath }}about">About Us</a></li>
-                    <li><a href="{{ site.basePath }}contact">Contact Us</a></li>
+                    <li><a href="{{ siteData.basePath }}">Home</a></li>
+                    <li><a href="{{ siteData.basePath }}medicare-101">Medicare 101</a></li>
+                    <li><a href="{{ siteData.basePath }}services">Our Services</a></li>
+                    <li><a href="{{ siteData.basePath }}about">About Us</a></li>
+                    <li><a href="{{ siteData.basePath }}contact">Contact Us</a></li>
                 </ul>
             </nav>
 
             <div class="footer__legal">
                 <h3>Your Data Rights</h3>
                 <ul>
-                    <li><a href="{{ site.basePath }}consumer-health-data-privacy">Consumer Health Data Privacy</a></li>
+                    <li><a href="{{ siteData.basePath }}consumer-health-data-privacy">Consumer Health Data Privacy</a></li>
                 </ul>
                 <h3>Legal</h3>
                 <ul>
-                    <li><a href="{{ site.basePath }}privacy-policy">Privacy Policy</a></li>
-                    <li><a href="{{ site.basePath }}terms">Terms &amp; Conditions</a></li>
-                    <li><a href="{{ site.basePath }}accessibility">Accessibility</a></li>
+                    <li><a href="{{ siteData.basePath }}privacy-policy">Privacy Policy</a></li>
+                    <li><a href="{{ siteData.basePath }}terms">Terms &amp; Conditions</a></li>
+                    <li><a href="{{ siteData.basePath }}accessibility">Accessibility</a></li>
                 </ul>
             </div>
 
             <div class="footer__disclosure">
                 <h3>Important Disclosures</h3>
                 <p>
-                    <small>{{ pageData.disclaimer | replace: "&", "&amp;" }}</small>
+                    <small>{% if siteData.shipInTPMODisclaimer %}{{ siteData.disclaimer | replace: "&", "&amp;" }}{% else %}{{ siteData.disclaimerPostSHIP | replace: "&", "&amp;" }}{% endif %}</small>
                 </p>
             </div>
         </div><!-- .layout -->
@@ -75,28 +75,23 @@
     <div class="bg-gradient-1">
         <div class="footer__content layout-spock max-width-laptop">
             <ul class="social">
-                <li>
-                    <a href="https://www.linkedin.com/company/jrhealthins/" target="_blank" rel="noopener">
-                        <svg width="24" height="24" aria-hidden="true">
-                            <use href="#svg__icon-linkedin" />
-                        </svg>
-                        <span class="sr-only">Follow us on LinkedIn (opens in new tab)</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.facebook.com/jrhealthins" target="_blank" rel="noopener">
-                        <svg width="24" height="24" aria-hidden="true">
-                            <use href="#svg__icon-facebook" />
-                        </svg>
-                        <span class="sr-only">Follow us on Facebook (opens in new tab)</span>
-                    </a>
-                </li>
+                {% for handle in siteData.publishedSocialProfiles %}
+                    {% assign profile = siteData.socialProfiles | where: "id", handle | first %}
+                    <li>
+                        <a href="{{ profile.url }}" target="_blank" rel="noopener">
+                            <svg width="24" height="24" aria-hidden="true">
+                                <use href="#svg__icon-{{ profile.id }}" />
+                            </svg>
+                            <span class="sr-only">Follow us on {{ profile.name }} (opens in new tab)</span>
+                        </a>
+                    </li>
+                {% endfor %}
             </ul>
             <div class="t-has-inline-links">
-                <p><small>Copyright &copy; {{ site.time | date: "%Y" }} {{ pageData.legalName | replace: "&", "&amp;" }}. All rights reserved.</small></p>
+                <p><small>Copyright &copy; {{ site.time | date: "%Y" }} {{ siteData.legalName | replace: "&", "&amp;" }}. All rights reserved.</small></p>
                 <ul>
-                    <li><a href="{{ site.basePath }}credits">Credits</a></li>
-                    <li><a href="{{ site.basePath }}sitemap">Sitemap</a></li>
+                    <li><a href="{{ siteData.basePath }}credits">Credits</a></li>
+                    <li><a href="{{ siteData.basePath }}sitemap">Sitemap</a></li>
                 </ul>
             </div>
         </div><!-- .max-width-laptop -->

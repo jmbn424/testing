@@ -1,10 +1,12 @@
 companyName: J&R Health Insurance
 legalName: J&R Health Insurance LLC
 srName: J and R Health Insurance
-url: https://jmbn424.github.io/testing
+basePath: "/"
+# Canonical site URL (single source of truth). Keep the trailing slash. At launch, flip to https://jrhealthins.org/
+url: https://testing.jrhealthins.org/
 defaultPageTitle: 'Washington Medicare Brokers | J&R Health Insurance'
 defaultPageDescription: |
-  Family-owned Medicare brokerage serving WA, OR, GA & TN. Free, personalized help for seniors and veterans choosing plans from all major carriers.
+  Family-owned Medicare brokerage serving WA, OR, GA & TN. Free, personalized help for people 65 and over and veterans choosing plans from all major carriers.
 tagline: Where coverage meets care
 
 # Contact info:
@@ -34,22 +36,69 @@ socialProfiles:
 publishedSocialProfiles:
 - linkedin
 - facebook
+# - yelp
 
+# TPMO disclaimer (CMS-standardized; FMO signs off the exact wording). Two dated versions are
+# stored; the shipInTPMODisclaimer switch (in the Switchboard) selects which the footer renders.
+# The 2026-10-01 CMS CY2027 swap = flip that ONE switch true->false (the pre-staged change
+# Jasmine merges on the day) — no prose surgery. Keep both versions in sync if the FMO redlines.
+# (canon footer "DATED CHANGE" / Switch Registry ship_in_tpmo_disclaimer / 2.2a)
 disclaimer: |
   We do not offer every plan available in your area. Any information we provide is limited to those plans we do offer in your area. Please contact Medicare.gov, 1-800-MEDICARE, or your local State Health Insurance Program (SHIP) to get information on all of your options. J&R Health Insurance is a private insurance brokerage and is not affiliated with or endorsed by Medicare, the U.S. Department of Veterans Affairs, or any other government agency. This is a solicitation for insurance. A licensed insurance agent/broker may contact you.
+
+# Pre-staged post-2026-10-01 version: SHIP clause dropped + "Medicare.gov or 1-800-MEDICARE".
+# Renders when shipInTPMODisclaimer is OFF. Do NOT make it live before 2026-10-01 (do-not-swap-early).
+disclaimerPostSHIP: |
+  We do not offer every plan available in your area. Any information we provide is limited to those plans we do offer in your area. Please contact Medicare.gov or 1-800-MEDICARE to get information on all of your options. J&R Health Insurance is a private insurance brokerage and is not affiliated with or endorsed by Medicare, the U.S. Department of Veterans Affairs, or any other government agency. This is a solicitation for insurance. A licensed insurance agent/broker may contact you.
 
 copyright: |
   Copyright © 2026 J&R Health Insurance LLC. All rights reserved.
 
+# Contact-form consent + solicitation copy (the canonical consent surface; canon <contact>).
+# Single-line scalars so the form renders these raw (no markdownify) and byte-for-byte as before;
+# inline <a> links and entities are intentional. Wording is FMO/counsel-owned — flag, don't reword.
+# The smsConsent line renders only when SMSProgramIsLive is ON (Switchboard).
+contactForm:
+  consentIntro: 'By submitting this form, you agree that we may contact you about your request by phone and email using the details you provide. Agreeing to text messages is optional and is never a condition of getting help from us or of enrolling in any plan.'
+  termsConsent: 'I agree to the <a href="/terms">Terms &amp; Conditions</a>, and I acknowledge the <a href="/privacy-policy">Privacy Policy</a> and <a href="/consumer-health-data-privacy">Consumer Health Data Privacy Policy</a>.'
+  smsConsent: '(Optional) Text me. I agree to receive customer-care text messages from J&R Health Insurance at the phone number I provide. Consent is not a condition of getting help or of buying any insurance product. Message frequency varies. Message and data rates may apply. Reply STOP to cancel or HELP for help. See our <a href="/privacy-policy">Privacy Policy</a> and <a href="/terms">Terms &amp; Conditions</a>.'
+  solicitation: 'This is a solicitation for insurance. A licensed insurance agent/broker may contact you. There is no cost to work with our brokers, and no obligation to enroll.'
+
 ## Switchboard
-licensedStates:
-# - CA
-- GA
-# - NV
-- OR
-- TN
-- WA
+# Supported jurisdictions — the single on/off control. EVERY state is listed; flip its boolean to
+# open or close a market (no comment-surgery, active states are toggles too). Insertion order =
+# canonical DISPLAY order (WA, OR, CA, NV, GA, TN), which drives the ${licensedStates} prose token
+# (_includes/licensed-states.liquid), JSON-LD areaServed (_includes/head.liquid), and the
+# `when: { state: XX }` section gates. The active set renders in this order; inactive states render
+# nothing. Flip CA/NV to true on licensure (they slot into positions 3–4).
+jurisdictions:
+  WA: true
+  OR: true
+  CA: false
+  NV: false
+  GA: true
+  TN: true
 SMSProgramIsLive: true
+sharesCHDWithBrokers: false
+carrierLogosShown: false
+testimonialsShown: false
+# SHIP shown in the TPMO disclaimer (footer + Terms 14). ON through 9/30/2026; flip to false
+# on 2026-10-01 for CMS CY2027 (the entire dated swap is this one line). canon Switch Registry.
+shipInTPMODisclaimer: true
+# Deploy-exposure switches (independent — the prod/testing distinction is carried by these + `url`,
+# not one "isProduction" flag, so a non-indexable deploy can still emit testable cards/structured data).
+# siteIsIndexable: may search engines index this deploy? false (testing) => every page gets a noindex
+#   meta, no <link rel=canonical>, robots.txt Disallow: /, and an empty sitemap.xml. Flip to true at
+#   launch ALONGSIDE `url`.
+siteIsIndexable: false
+showStructuredData: true      # emit JSON-LD (schema.org); on even for testing so it stays verifiable
+includeSocialShareMeta: true  # emit Open Graph + Twitter card meta; on for testing-link previews
+# Allow AI/LLM crawlers. Drives robots.txt (AI user-agent rules) + llms.txt. Canon posture = ALLOW
+# (deliberate, for a public brochure). NOTE: robots.txt is advisory only — real enforcement is the
+# Cloudflare dashboard (AI Crawl Control). See _docs/ai-crawlers.md. (No effect while the site is
+# non-indexable: robots.txt Disallows everything then.)
+allowLLM: true
+legalDocsDate: 2026-06-30
 
 # TODO: Incorporate more "switchboard" config options around compliance state setting into this root data config file.
 # TODO: Add more fields to map to schema.org / structured data fields for SEO

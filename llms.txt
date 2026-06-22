@@ -1,9 +1,33 @@
 ---
 excludeFromSitemap: true
 ---
-# {{ site.data.global.companyName }}
+{%- assign g = site.data.global -%}
+{%- if g.siteIsIndexable and g.allowLLM -%}
+{%- capture licensedStates -%}{%- include licensed-states.liquid -%}{%- endcapture -%}
+# {{ g.companyName }}
 
-> {{ site.data.global.defaultPageDescription }}
+> {{ g.defaultPageDescription | strip }}
 
-## Company
-- [Home page]({{ site.data.global.url }}/)
+{{ g.companyName }} is a family-owned, licensed Medicare insurance brokerage based in Puyallup, Washington, serving {{ licensedStates | strip }}. There is no cost to work with the brokers; insurance carriers pay a commission only if you enroll. This site is informational: it explains Medicare in plain language, describes J&R's services, and offers ways to get in touch. It takes no payment and stores no medical records.
+
+## Main pages
+- [Home]({{ g.url }}): Overview of J&R Health Insurance and how the brokers help people compare and choose Medicare coverage.
+- [Our Services]({{ g.url }}services): Medicare Advantage (Part C) guidance, Medicare Part D prescription drug help, and coverage coordination for veterans (how VA, CHAMPVA, and TRICARE for Life work alongside Medicare).
+- [Medicare 101]({{ g.url }}medicare-101): A plain-English guide to Medicare: Parts A, B, C, and D; Original Medicare vs. Medicare Advantage; Medigap; enrollment periods; 2026 costs; and rules specific to the states J&R serves.
+- [About Us]({{ g.url }}about): Who J&R is, the family behind the agency, and the annual Medicare certification the brokers complete.
+- [Contact Us]({{ g.url }}contact): Phone, text, email, and office details, plus a form to request a callback. No cost and no obligation to enroll.
+
+## Legal and privacy
+- [Consumer Health Data Privacy Policy]({{ g.url }}consumer-health-data-privacy): How J&R handles consumer health data under Washington's My Health My Data Act, and the rights you have over it.
+- [Privacy Policy]({{ g.url }}privacy-policy): What information the website collects, how it is used and shared, and the choices you have.
+- [Terms & Conditions]({{ g.url }}terms): The terms for using the website, including the text-message (SMS) program terms.
+- [Accessibility Statement]({{ g.url }}accessibility): J&R's commitment to WCAG 2.2 AA and how to request help or report a barrier.
+
+## Optional
+- [Sitemap]({{ g.url }}sitemap): A plain list of the main pages on the site.
+- [Credits]({{ g.url }}credits): Image, icon, and font attributions.
+{%- else -%}
+# {{ g.companyName }}
+
+AI and LLM crawling, indexing, and training are not permitted on this {% if g.siteIsIndexable %}site{% else %}deployment{% endif %}.
+{%- endif %}

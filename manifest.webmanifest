@@ -3,7 +3,7 @@ excludeFromSitemap: true
 ---
 {
   "icons": [
-    { "src": "{{ site.basePath }}assets/images/ui/icon-192.png", "type": "image/png", "sizes": "192x192" },
-    { "src": "{{ site.basePath }}assets/images/ui/icon-512.png", "type": "image/png", "sizes": "512x512" }
+    { "src": "{{ site.data.global.basePath }}assets/images/ui/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "{{ site.data.global.basePath }}assets/images/ui/icon-512.png", "type": "image/png", "sizes": "512x512" }
   ]
 }

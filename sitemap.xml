@@ -31,8 +31,10 @@ excludeFromSitemap: true
       {% endunless %}
     {% endfor %}
   {% endcomment %}
+    {% comment %} Only list URLs on an indexable deploy; a non-indexable (testing) build emits an empty but valid urlset. {% endcomment %}
+    {% if site.data.global.siteIsIndexable %}
     <url>
-      <loc>{{ siteURL }}/</loc>
+      <loc>{{ siteURL }}</loc>
     </url>
     {% for page in site.pages %}
       {% assign redirect = false %}
@@ -41,9 +43,10 @@ excludeFromSitemap: true
       {% assign lastChar = page.url | slice: adjustedUrlSize %}
       {% unless page.excludeFromSitemap == true or page.name == "redirects.json" or page.url contains ".css" or page.url contains ".js" or page.url contains ".txt" or page.url contains ".webmanifest" or page.url contains ".json" or lastChar == "/" %}
       <url>
-        <loc>{{ siteURL }}{{ page.url | remove: ".html" }}</loc>
+        <loc>{{ siteURL }}{{ page.url | remove_first: "/" | remove: ".html" }}</loc>
       </url>
       {% endunless %}
     {% endfor %}
+    {% endif %}
   </urlset>
 {%- endcapture -%}{{ compressedXml | remove: "  " | remove: "	" | strip_newlines }}

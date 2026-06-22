@@ -1,0 +1,8 @@
+{% assign siteData = siteData %}
+**Email:** {{ siteData.email }}<br>
+**Phone:** {{ siteData.phone }}<br>
+**Fax:** {{ siteData.fax }}<br>
+**Address:**<br>
+{{ siteData["address-1"] }}<br>
+{{ siteData.city }}, {{ siteData.state }} {{ siteData.zip }}<br>
+**Hours:** {{ siteData.hours }}

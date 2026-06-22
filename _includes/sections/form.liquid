@@ -4,7 +4,7 @@ This is an improved version of AgencyBloc's lead form tool HTML output. See orig
 https://github.com/jmbn424/website-documentation/blob/main/technical/lead-form-code.md
 
 {% endcomment %}
-
+{% assign contactForm = site.data.global.contactForm %}
 <section class="bg-light-gray">
     <div class="max-width-mobile-landscape">
         <h2 class="t-align-center">Get in touch</h2>
@@ -36,20 +36,20 @@ https://github.com/jmbn424/website-documentation/blob/main/technical/lead-form-c
             <fieldset class="form__consent">
                 <legend class="is-visually-hidden">Consent</legend>
                 <p>
-                    <small>By submitting this form, you agree that we may contact you about your request by phone and email using the details you provide. Agreeing to text messages is optional and is never a condition of getting help from us or of enrolling in any plan.</small>
+                    <small>{{ contactForm.consentIntro }}</small>
                 </p>
                 <p class="form__field--checkbox">
                     <input type="checkbox" name="custom_Terms Consent" value="1" required aria-labelledby="terms-consent-text">
-                    <span id="terms-consent-text">I agree to the <a href="./terms">Terms &amp; Conditions</a>, and I acknowledge the <a href="./privacy-policy">Privacy Policy</a> and <a href="./consumer-health-data-privacy">Consumer Health Data Privacy Policy</a>.</span>
+                    <span id="terms-consent-text">{{ contactForm.termsConsent }}</span>
                 </p>
                 {% if site.data.global.SMSProgramIsLive == true %}
                     <p class="form__field--checkbox">
                         <input type="checkbox" name="custom_SMS Consent" value="1" aria-labelledby="sms-consent-text">
-                        <span id="sms-consent-text">(Optional) Text me. I agree to receive customer-care text messages from J&R Health Insurance at the phone number I provide. Consent is not a condition of getting help or of buying any insurance product. Message frequency varies. Message and data rates may apply. Reply STOP to cancel or HELP for help. See our <a href="./privacy-policy">Privacy Policy</a> and <a href="./terms">Terms &amp; Conditions</a>.</span>
+                        <span id="sms-consent-text">{{ contactForm.smsConsent }}</span>
                     </p>
                 {% endif %}
             </fieldset>
-            <p><small>This is a solicitation for insurance. A licensed insurance agent/broker may contact you. There is no cost to work with our brokers, and no obligation to enroll.</small></p>
+            <p><small>{{ contactForm.solicitation }}</small></p>
             <div class="form__submit form-action">
                 <button type="submit">Submit</button>
             </div>

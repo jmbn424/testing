@@ -1,12 +1,21 @@
+# Deliberately minimal. Everything else has moved to files that
+# hot-reload (_data/), the Gemfile.
 ---
 timezone: America/Los_Angeles
-markdown: kramdown
 sass:
   sass_dir: assets/css/_modules
   style: compressed
-plugins:
-# - jekyll-feed
-# - jekyll-paginate
-- jekyll-redirect-from
-baseurl: ""
-basePath: "./"
+
+# Underscore-prefixed files Jekyll would otherwise ignore but that must ship to the build root
+# (Cloudflare Pages reads them there). Add _headers here too when it lands. (_config changes need
+# a local `serve` restart; Cloudflare rebuilds fresh each deploy so it's picked up there.)
+include:
+  - _redirects
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - CLAUDE.md
+  - README.md

@@ -1,0 +1,14 @@
+{%- comment -%}
+    Reusable "Carriers" module (Home, About; future /carriers). Outputs markdown for the
+    sections engine. The logo grid is gated on `carrierLogosShown` (OFF until the FMO-approved
+    logo list + carrier-marks disclaimer land, canon 2.7) — until then, a plain text blurb,
+    no logos/trademarks. Heading is fixed for now (the engine does not pass include params).
+{%- endcomment -%}
+{%- assign siteData = site.data.global -%}
+## The carriers we work with
+
+We're an independent brokerage, so we're able to work with more than one Medicare carrier and compare the plans they offer. Our view of the market is limited to the carriers we work with, which is why the disclosures at the bottom of every page point you to Medicare.gov and 1-800-MEDICARE, where you can see every plan available in your area.
+{%- if siteData.carrierLogosShown %}
+
+{% comment %} carrierLogosShown ON: render the FMO-approved logo grid + the carrier-marks disclaimer here. TBD: approved logos. {% endcomment %}
+{%- endif %}

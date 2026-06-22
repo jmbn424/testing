@@ -1,0 +1,51 @@
+---
+layout: default
+---
+{%- comment -%}
+    Composable-sections engine. A page supplies a `sections:` array in front matter
+    (front-matter-only page: empty body). Each entry is either `md:` (markdown) or
+    `include:` (a partial under _includes/, e.g. `sections/carriers`). `when:` gates a
+    section on `state` (must be active in the jurisdictions map) or `switch` (a global.yml
+    boolean). `inline: true` joins a fragment without a paragraph break. Fragments are
+    concatenated, ${tokens} resolved, then markdownified once. Used by the legal pages
+    AND the marketing pages; not legal-specific despite the history.
+{%- endcomment -%}
+{%- assign siteData = site.data.global -%}
+{%- assign nl = '
+' -%}
+{%- assign nl2 = nl | append: nl -%}
+{%- assign doc = '' -%}
+{%- for s in page.sections -%}
+    {%- assign show = true -%}
+    {%- if s.when.state -%}
+        {%- unless siteData.jurisdictions[s.when.state] -%}{%- assign show = false -%}{%- endunless -%}
+    {%- endif -%}
+    {%- if s.when.switch -%}
+        {%- unless siteData[s.when.switch] -%}{%- assign show = false -%}{%- endunless -%}
+    {%- endif -%}
+    {%- if show -%}
+        {%- if s.include -%}
+            {%- assign incfile = s.include | append: '.liquid' -%}
+            {%- capture frag -%}{%- include {{ incfile }} -%}{%- endcapture -%}
+            {%- assign frag = frag | strip -%}
+        {%- else -%}
+            {%- assign frag = s.md -%}
+        {%- endif -%}
+        {%- if s.inline -%}
+            {%- assign doc = doc | append: frag -%}
+        {%- else -%}
+            {%- assign doc = doc | append: nl2 | append: frag -%}
+        {%- endif -%}
+    {%- endif -%}
+{%- endfor -%}
+{%- assign effDate = page.effectiveDate | default: siteData.legalDocsDate | date: '%B %-d, %Y' -%}
+{%- assign updDate = page.lastUpdated | default: siteData.legalDocsDate | date: '%B %-d, %Y' -%}
+{%- capture licensedStatesStr -%}{%- include licensed-states.liquid -%}{%- endcapture -%}
+{%- assign licensedStatesStr = licensedStatesStr | strip -%}
+{%- assign doc = doc | replace: '${email}', siteData.email | replace: '${phone}', siteData.phone | replace: '${effectiveDate}', effDate | replace: '${lastUpdated}', updDate | replace: '${licensedStates}', licensedStatesStr -%}
+{% include sections/hero.liquid text=page.heading size=page.heroSize %}
+<section>
+    <div class="md max-width-tablet-portrait">
+        {{ doc | markdownify }}
+    </div>
+</section>
