@@ -5,11 +5,10 @@
 {%- endcomment -%}
 {%- assign credits = site.data.lists.credits -%}
 {%- if credits.media == empty -%}
-We are not currently using any attribution-required images. When we do, we credit each one here, per its license.
+We are not currently crediting any images. When we use one that calls for a credit, it appears here.
 {%- else -%}
-We use the following media under license:
 {% for m in credits.media %}
-- "{{ m.title }}" by {{ m.creator }} ({{ m.license }}{% if m.source %}, [source]({{ m.source }}){% endif %}{% if m.deed %}, [license]({{ m.deed }}){% endif %})
+- "{{ m.title }}" by {{ m.creator }} ({{ m.license }}{% if m.source %}, [source]({{ m.source }}){% endif %}{% if m.deed %}, [details]({{ m.deed }}){% endif %})
 {%- endfor %}
 {%- endif %}
 

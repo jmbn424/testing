@@ -7,13 +7,23 @@
 # rendered output; we are deliberately staying within GitHub Pages safe-mode until well after
 # launch, so the subscription is this one-line registry entry, not a build-time scan.)
 
-# Attribution-required media (Flickr CC BY, Noun Project free tier). Empty until such an asset is used.
-media: []
-  # - title: Example photo
-  #   creator: Jane Doe
-  #   license: CC BY 4.0
-  #   source: https://www.flickr.com/photos/...
-  #   deed: https://creativecommons.org/licenses/by/4.0/
+# Credited media. Add an entry when you use an image that requires a credit (e.g. Flickr CC BY,
+# Noun Project free tier) OR a public-domain image you want to thank the creator for as a courtesy.
+# NOTE: the two Flickr landscapes below are Public Domain Mark 1.0 (no attribution legally required) —
+# credited here as a courtesy. The 2026-06-26 content drop labeled them "CC BY," but the Flickr
+# metadata says PDM; corrected to match the source.
+media:
+  - title: Artist Point, North Cascades, Washington
+    creator: Jeff Hollett
+    license: Public Domain Mark 1.0
+    source: https://www.flickr.com/photos/landscapesinthewest/53250319880/
+    deed: https://creativecommons.org/publicdomain/mark/1.0/
+  - title: Yellow Aster Butte, North Cascades, Washington
+    creator: Jeff Hollett
+    license: Public Domain Mark 1.0
+    source: https://www.flickr.com/photos/landscapesinthewest/53251184117/
+    deed: https://creativecommons.org/publicdomain/mark/1.0/
+# Noun Project icons: none used yet (kept dark until an icon is actually placed).
 
 # Fonts & software (site-wide; credited as a courtesy / per license).
 software:

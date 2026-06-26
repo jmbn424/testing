@@ -5,9 +5,9 @@
     no logos/trademarks. Heading is fixed for now (the engine does not pass include params).
 {%- endcomment -%}
 {%- assign siteData = site.data.global -%}
-## The carriers we work with
+## Carriers we partner with
 
-We're an independent brokerage, so we're able to work with more than one Medicare carrier and compare the plans they offer. Our view of the market is limited to the carriers we work with, which is why the disclosures at the bottom of every page point you to Medicare.gov and 1-800-MEDICARE, where you can see every plan available in your area.
+We're an independent brokerage, so we're able to work with more than one Medicare carrier and compare the plans they offer. Our view of the market is limited to the carriers we work with{% if siteData.carrierLogosShown %}, some of which are listed below{% endif %}. This is why the disclosures at the bottom of every page point you to Medicare.gov and 1-800-MEDICARE, where you can see every plan available in your area.
 {%- if siteData.carrierLogosShown %}
 
 {% comment %} carrierLogosShown ON: render the FMO-approved logo grid + the carrier-marks disclaimer here. TBD: approved logos. {% endcomment %}

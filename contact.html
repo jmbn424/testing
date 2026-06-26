@@ -5,8 +5,7 @@ hasForm: true
 intro: |
     Tell us how we can help, and we'll follow up personally. There's no cost to work with us, and no obligation to enroll.
 ---
-{% assign siteData = site.data.global %}
-{% include sections/hero.liquid text="Contact Us" %}
+{% include sections/hero.liquid text="Contact us" %}
 {% if page.intro %}
     <section>
         <div class="md max-width-mobile-landscape">
@@ -15,11 +14,3 @@ intro: |
     </section>
 {% endif %}
 {% include sections/form.liquid %}
-{%- capture contactDetails -%}{%- include company-contact-info.liquid -%}{%- endcapture -%}
-<section>
-    <div class="md max-width-mobile-landscape">
-        <h2>Prefer to call or text?</h2>
-        <p>Some folks would rather talk it through than fill out a form, and that's completely fine. Here's how to reach us directly.</p>
-        {{ contactDetails | strip | markdownify }}
-    </div>
-</section>

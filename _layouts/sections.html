@@ -46,6 +46,7 @@ layout: default
 {% include sections/hero.liquid text=page.heading size=page.heroSize %}
 <section>
     <div class="md max-width-tablet-portrait">
-        {{ doc | markdownify }}
+        {%- comment -%}External links (href starts with http) open in a new tab with rel="noopener"; internal links are root-relative (/x) so they are never matched.{%- endcomment -%}
+        {{ doc | markdownify | replace: '<a href="http', '<a target="_blank" rel="noopener" href="http' }}
     </div>
 </section>

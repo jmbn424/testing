@@ -78,7 +78,7 @@ jurisdictions:
   NV: false
   GA: true
   TN: true
-SMSProgramIsLive: true
+SMSProgramIsLive: false
 sharesCHDWithBrokers: false
 carrierLogosShown: false
 testimonialsShown: false
@@ -99,6 +99,3 @@ includeSocialShareMeta: true  # emit Open Graph + Twitter card meta; on for test
 # non-indexable: robots.txt Disallows everything then.)
 allowLLM: true
 legalDocsDate: 2026-06-30
-
-# TODO: Incorporate more "switchboard" config options around compliance state setting into this root data config file.
-# TODO: Add more fields to map to schema.org / structured data fields for SEO
