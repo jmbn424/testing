@@ -1,0 +1,8 @@
+{%- comment -%}
+Business hours, single-sourced from _data/global.yml `hours`. Renders the footer's
+semantic <time>/<abbr> markup. The legal-page contact blocks use `hours.prose` instead
+(plain text). Keep the prose and atomic forms in global.yml in sync.
+{%- endcomment -%}
+{%- assign h = site.data.global.hours -%}
+<span>{{ h.days }}: <time datetime="{{ h.openISO }}">{{ h.open }}</time>&ndash;<time datetime="{{ h.closeISO }}">{{ h.close }}</time> <abbr title="{{ h.tzName }}">{{ h.tzAbbr }}</abbr></span><br>
+<span class="t-secondary">({{ h.note }})</span>

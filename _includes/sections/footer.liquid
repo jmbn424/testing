@@ -17,25 +17,22 @@
                 <address>
                     <dl class="contact">
                         <dt>Phone</dt>
-                        <dd><a href="tel:+12535288805">(253) 528-8805</a></dd>
+                        <dd><a href="tel:+1{{ siteData.phone | remove: '(' | remove: ')' | remove: ' ' | remove: '-' }}">{{ siteData.phone }}</a></dd>
 
                         <dt>Fax</dt>
-                        <dd>(253) 363-8808</dd>
+                        <dd>{{ siteData.fax }}</dd>
 
                         <dt>Email</dt>
-                        <dd><a href="mailto:info@jrhealthins.org">info@jrhealthins.org</a></dd>
+                        <dd><a href="mailto:{{ siteData.email }}">{{ siteData.email }}</a></dd>
 
                         <dt class="margin-top-picard">Address</dt>
-                        <dd><a href="https://maps.google.com/maps?cid=9426287045452652682" target="_blank" rel="noopener">702 S Hill Park Dr, Ste 205<br>Puyallup, WA 98373<span class="sr-only"> (opens in new tab)</span></a></dd>
+                        <dd><a href="{{ siteData.googleMapsURL }}" target="_blank" rel="noopener">{{ siteData["address-1"] }}<br>{{ siteData.city }}, {{ siteData.state }} {{ siteData.zip }}<span class="sr-only"> (opens in new tab)</span></a></dd>
                     </dl>
                 </address>
 
                 <dl class="hours">
                     <dt>Hours</dt>
-                    <dd>
-                        <span>Monday&ndash;Friday: <time datetime="09:30">9:30 AM</time>&ndash;<time datetime="17:30">5:30 PM</time> <abbr title="Pacific Time">PT</abbr></span><br>
-                        <span class="t-secondary">(closed weekends and holidays)</span>
-                    </dd>
+                    <dd>{% include hours.liquid %}</dd>
                 </dl>
             </div>
             

@@ -1,0 +1,37 @@
+# HTTP response headers for the Cloudflare Pages PRODUCTION deploy.
+#
+# INERT on the GitHub Pages testing host (GitHub Pages does not read _headers); it takes effect
+# only on the Cloudflare Pages deploy. Like _redirects, this file MUST be listed in _config.yml
+# `include:` or Jekyll silently drops underscore-prefixed files from _site (then it never ships).
+#
+# After the Cloudflare cutover, verify once in the browser (DevTools -> Console) that no page
+# logs a CSP violation. If anything is unexpectedly blocked, switch the header name to
+# `Content-Security-Policy-Report-Only` to observe without enforcing, fix, then switch back.
+#
+# CSP is strict 'self': the site self-hosts its CSS, fonts, images, icons, and its one script
+# (the form-field init at /assets/js/form-handling.js). JSON-LD is type="application/ld+json"
+# (a data block, not governed by script-src). The lead form POSTs to AgencyBloc (form-action).
+# There are NO iframes, inline styles/scripts, data: URIs, or third-party resource loads — every
+# external host on the site is an <a href> link, which CSP does not police.
+#
+# CHANGE CONTROL: enabling Cloudflare Web Analytics / Turnstile / any embed or tracker adds a
+# resource load that this CSP will block. Update the relevant directive HERE FIRST, in lockstep
+# with the privacy-copy switch (canon Switch Registry; flagged-items 5.2 / 5.3). A blocked
+# tracker is the fail-safe, not the goal — wire the CSP and the Privacy Policy together so a new
+# tracker can't ship while the copy still says "no tracking", and vice-versa.
+#   - Cloudflare Web Analytics  -> script-src + connect-src  https://static.cloudflareinsights.com / cloudflareinsights.com
+#   - Turnstile                 -> script-src + frame-src    https://challenges.cloudflare.com
+#   - a Google Static Maps image-> img-src                   https://maps.googleapis.com
+#   - Google Tag Manager / GA4  -> script-src + connect-src + img-src  https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com
+#   - Facebook (Meta) Pixel     -> script-src + connect-src + img-src  https://connect.facebook.net https://www.facebook.com
+# GOTCHA for GTM + the Pixel: each also ships an INLINE bootstrap <script>, which strict
+# script-src 'self' blocks — allowing the domains is NOT enough. Give that snippet a per-response
+# nonce or a sha256 hash (or move it to an external /assets/js file), or loosen script-src. Treat
+# that as part of the same change-control step, never a quick inline paste.
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; form-action 'self' https://app.agencybloc.com; frame-src 'none'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=()

@@ -7,10 +7,11 @@ sass:
   style: compressed
 
 # Underscore-prefixed files Jekyll would otherwise ignore but that must ship to the build root
-# (Cloudflare Pages reads them there). Add _headers here too when it lands. (_config changes need
-# a local `serve` restart; Cloudflare rebuilds fresh each deploy so it's picked up there.)
+# (Cloudflare Pages reads them there). (_config changes need a local `serve` restart; Cloudflare
+# rebuilds fresh each deploy so it's picked up there.)
 include:
   - _redirects
+  - _headers
 
 exclude:
   - Gemfile

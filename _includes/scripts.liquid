@@ -1,13 +1,10 @@
-<script>
-    {% if page.hasForm %}
-        {% comment %}
-            Honeypot URL form field handling
-        {% endcomment %}
-
-        document.addEventListener('DOMContentLoaded', () => {
-            // fieldWeb: clear anything a password manager or browser autofilled before ignore-hints are applied.
-            const webField = document.getElementById('field-website');
-            if (webField) webField.value = '';
-        });
-    {% endif %}
-</script>
+{%- comment -%}
+Honeypot autofill-clear. Externalized to /assets/js/form-handling.js (not inline) so the
+Content-Security-Policy can keep a strict script-src 'self'. Loaded only on pages that render
+the lead form. The JSON-LD in head.liquid is type="application/ld+json" (a data block, not
+script-src governed), so the form pages' honeypot is the site's only executable script.
+{%- endcomment -%}
+{%- assign siteData = site.data.global -%}
+{%- if page.hasForm -%}
+<script src="{{ siteData.basePath }}assets/js/form-handling.js" defer></script>
+{%- endif -%}

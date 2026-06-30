@@ -18,7 +18,19 @@ address-1: 702 S Hill Park Dr, Ste 205
 city: Puyallup
 state: WA
 zip: 98373
-hours: Monday to Friday, 9:30 a.m. to 5:30 p.m. Pacific time, except holidays
+# Hours — single canonical source. `prose` drives the legal-page contact blocks
+# (company-contact-info.liquid); the atomic fields drive the footer's <time>/<abbr> markup
+# (_includes/hours.liquid). Data-shape + JSON-LD single-sourcing: revisit later (see backlog).
+hours:
+  prose: Monday to Friday, 9:30 AM to 5:30 PM Pacific time, closed weekends and holidays
+  days: Monday–Friday
+  open: "9:30 AM"
+  openISO: "09:30"
+  close: "5:30 PM"
+  closeISO: "17:30"
+  tzAbbr: PT
+  tzName: Pacific Time
+  note: closed weekends and holidays
 
 googleMapsURL: https://maps.google.com/maps?cid=9426287045452652682
 socialProfiles:
@@ -59,9 +71,9 @@ copyright: |
 # inline <a> links and entities are intentional. Wording is FMO/counsel-owned — flag, don't reword.
 # The smsConsent line renders only when SMSProgramIsLive is ON (Switchboard).
 contactForm:
-  consentIntro: 'By submitting this form, you agree that we may contact you about your request by phone and email using the details you provide. Agreeing to text messages is optional and is never a condition of getting help from us or of enrolling in any plan.'
+  consentIntro: 'By submitting this form, you agree that we may contact you about your request by phone and email using the details you provide.'
   termsConsent: 'I agree to the <a href="/terms">Terms &amp; Conditions</a>, and I acknowledge the <a href="/privacy-policy">Privacy Policy</a> and <a href="/consumer-health-data-privacy">Consumer Health Data Privacy Policy</a>.'
-  smsConsent: '(Optional) Text me. I agree to receive customer-care text messages from J&R Health Insurance at the phone number I provide. Consent is not a condition of getting help or of buying any insurance product. Message frequency varies. Message and data rates may apply. Reply STOP to cancel or HELP for help. See our <a href="/privacy-policy">Privacy Policy</a> and <a href="/terms">Terms &amp; Conditions</a>.'
+  smsConsent: '(Optional) Text me. I agree to receive customer care, account notification, and marketing text messages from J&R Health Insurance at the phone number I provide, including messages sent using automated technology. Consent is not a condition of getting help or of buying any insurance product. Message frequency varies. Message and data rates may apply. Reply STOP to cancel or HELP for help. See our <a href="/privacy-policy">Privacy Policy</a> and <a href="/terms">Terms &amp; Conditions</a>.'
   solicitation: 'This is a solicitation for insurance. A licensed insurance agent/broker may contact you. There is no cost to work with our brokers, and no obligation to enroll.'
 
 ## Switchboard
@@ -78,10 +90,21 @@ jurisdictions:
   NV: false
   GA: true
   TN: true
-SMSProgramIsLive: false
+# SMS program. ON (2026-06-29): Intulse requires the site in its FINAL state to review and verify
+# before they enable SMS carrier-side — a chicken-and-egg, so the site presents SMS-on now and
+# stays on for the project duration unless told otherwise. Drives the Contact opt-in checkbox +
+# the present-tense SMS copy on Terms §6 / Privacy §4. Diverges from canon (sms_program_live OFF);
+# see the content.md divergence log (2026-06-29). sms-legal-theory / sms-consent-scope stay open for counsel.
+SMSProgramIsLive: true
 sharesCHDWithBrokers: false
 carrierLogosShown: false
-testimonialsShown: false
+# Reviews module. ON for UI wiring/testing (Aaron 2026-06-30): we know we'll need it, so wire it up
+# now. Currently INERT — the curated carousel isn't built, so the module renders only the
+# word-of-mouth blurb (the `if testimonialsShown` branch is an empty placeholder). FMO advises; may
+# flip OFF for launch. The switch is wiring only; canon `testimonials-display` still gates the real
+# review CONTENT (FMO marketing + counsel FTC pass + developer-review exclusion) before anything
+# renders publicly.
+testimonialsShown: true
 # SHIP shown in the TPMO disclaimer (footer + Terms 14). ON through 9/30/2026; flip to false
 # on 2026-10-01 for CMS CY2027 (the entire dated swap is this one line). canon Switch Registry.
 shipInTPMODisclaimer: true

@@ -14,7 +14,15 @@ layout: default
 {%- assign nl = '
 ' -%}
 {%- assign nl2 = nl | append: nl -%}
+{%- comment -%}
+    TEMPORARY (2026-06-30): when a page sets `sectionDividers: true` (the marketing pages), a markdown
+    `---` is inserted between rendered sections so the blocks don't visually blend together. This is a
+    stopgap until each section becomes a proper <section> sub-tree; remove the flag + this divider logic
+    then. The rule is tied to SHOWN sections (never the first, never before an `inline` join), so a
+    gated-off section can't leave a dangling <hr>. See _docs/backlog.md.
+{%- endcomment -%}
 {%- assign doc = '' -%}
+{%- assign started = false -%}
 {%- for s in page.sections -%}
     {%- assign show = true -%}
     {%- if s.when.state -%}
@@ -33,16 +41,19 @@ layout: default
         {%- endif -%}
         {%- if s.inline -%}
             {%- assign doc = doc | append: frag -%}
+        {%- elsif started and page.sectionDividers -%}
+            {%- assign doc = doc | append: nl2 | append: '---' | append: nl2 | append: frag -%}
         {%- else -%}
             {%- assign doc = doc | append: nl2 | append: frag -%}
         {%- endif -%}
+        {%- assign started = true -%}
     {%- endif -%}
 {%- endfor -%}
 {%- assign effDate = page.effectiveDate | default: siteData.legalDocsDate | date: '%B %-d, %Y' -%}
 {%- assign updDate = page.lastUpdated | default: siteData.legalDocsDate | date: '%B %-d, %Y' -%}
 {%- capture licensedStatesStr -%}{%- include licensed-states.liquid -%}{%- endcapture -%}
 {%- assign licensedStatesStr = licensedStatesStr | strip -%}
-{%- assign doc = doc | replace: '${email}', siteData.email | replace: '${phone}', siteData.phone | replace: '${effectiveDate}', effDate | replace: '${lastUpdated}', updDate | replace: '${licensedStates}', licensedStatesStr -%}
+{%- assign doc = doc | replace: '${email}', siteData.email | replace: '${phone}', siteData.phone | replace: '${legalName}', siteData.legalName | replace: '${companyName}', siteData.companyName | replace: '${effectiveDate}', effDate | replace: '${lastUpdated}', updDate | replace: '${licensedStates}', licensedStatesStr -%}
 {% include sections/hero.liquid text=page.heading size=page.heroSize %}
 <section>
     <div class="md max-width-tablet-portrait">
